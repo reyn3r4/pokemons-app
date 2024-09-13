@@ -1,0 +1,45 @@
+div.slideshow-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.favorite-slides {
+  display: none;
+  height: 50px;
+  width: 50px;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+.fade img {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes fade {
+  from {
+    opacity: .4
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+.favorite-card {
+  display: inline-flex !important;
+}
+
+img.dream-world {
+  position: absolute;
+  /*  transform: rotate(25deg); */
+  width: 125px;
+  max-height: 150px;
+  z-index: 100;
+  top: -50px;
+  left: auto;
+}

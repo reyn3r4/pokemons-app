@@ -1,0 +1,62 @@
+<mat-card appearance="outlined">
+    <mat-card-content>
+        <!--table-->
+        <div class="mat-elevation-z8">
+            <mat-form-field>
+                <mat-label i18n>Filter</mat-label>
+                <input matInput
+                        (keyup)="onKeyUp($event)"
+                        placeholder="Ex. pika"
+                        [formControl]="myControl"
+                        [matAutocomplete]="auto">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                    <!--  @for (option of filteredOptions | async; track option) {} -->
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option"
+                        (click)="applyFilter(option)">{{option}}</mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <div class="table-container">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef>#</th>
+                        <td mat-cell *matCellDef="let row">{{row.id}}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="icon">
+                        <th mat-header-cell *matHeaderCellDef><mat-icon aria-hidden="false" fontIcon="image"
+                                style="color: rgb(112, 2, 2)"></mat-icon></th>
+                        <td mat-cell *matCellDef="let row"><img src={{row.icon}} onerror="this.src='favicon.ico'"
+                                alt="NF" style="width: 50px" /></td>
+                    </ng-container>
+                    <ng-container matColumnDef="favorite">
+                        <th mat-header-cell *matHeaderCellDef aria-label="row actions" i18n>Favorite</th>
+                        <td mat-cell *matCellDef="let row">
+                            <button mat-icon-button class="btn-favorite" color="accent" matTooltip="Mark as favorite"
+                                (click)="pokemonSetFavorite(row);$event.stopPropagation()">
+                                <mat-icon *ngIf="row.favorite">favorite</mat-icon>
+                                <mat-icon *ngIf="!row.favorite">favorite_border</mat-icon>
+                            </button>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef i18n>Name</th>
+                        <td mat-cell *matCellDef="let row">{{row.name | titlecase}}</td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="pokemonSelected(row)"
+                        [class.row-selected]="row.id===selected">
+                    </tr>
+                </table>
+            </div>
+            <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons i18n>
+                <!--       firstPageLabel="Primera pagina"
+                 lastPageLabel="lastPageLabel"
+                 previousPageLabel="previousPageLabel"
+                 nextPageLabel="nextPageLabel"
+                 getRangeLabel="nostrando page: de length:" -->
+
+            </mat-paginator>
+        </div>
+
+        <!--end table-->
+    </mat-card-content>
+</mat-card>

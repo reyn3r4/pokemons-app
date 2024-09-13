@@ -1,0 +1,14 @@
+<mat-card>
+    <mat-card-content class="favorite-card" (click)="openDialog()" [ngStyle]="{'min-height':'35px'}">
+    <img class="dream-world" src="{{favorite.sprites.dream_world_front}}" onerror="this.src='favicon.ico'" alt=""/>
+     <div class="slideshow-container">
+      <div class="favorite-slides fade">
+        <img src="{{favorite.sprites.showdown_front}}" onerror="this.src='favicon.ico'"/>
+      </div>
+      <div *ngIf="favorite.sprites.showdown_back" class="favorite-slides fade">
+        <img src="{{favorite.sprites.showdown_back}}"/>
+      </div>
+    </div>
+    </mat-card-content>
+  </mat-card>
+  

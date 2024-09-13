@@ -1,0 +1,20 @@
+<mat-toolbar>
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+  </mat-toolbar>
+  <main class="main">
+    <div *ngIf="favorite!=0" class="margin-card">
+      <app-favorite-pokemon-bar></app-favorite-pokemon-bar>
+    </div>
+    <div class="container">
+      <div class="margin-card pokemon-list ">
+        <app-pokemons-list (setSelected)="pokemonSelected($event)" (setFavorite)="changeFavorite($event)"></app-pokemons-list>
+      </div>
+      <!-- [ngStyle]="{display: selected==0 ? 'none' : 'initial'}" -->
+      <div *ngIf="selected.id!=0" class="margin-card pokemon-details">
+        <app-card-info [pokemon]="selected" (setFavorite)="changeFavorite($event)"></app-card-info>
+      </div>    
+    </div>
+    <div class="margin-card">
+      <app-pokemon-resume></app-pokemon-resume>
+    </div>
+  </main>

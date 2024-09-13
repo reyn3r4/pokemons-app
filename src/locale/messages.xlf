@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="3819659611579574825" datatype="html">
+        <source> Details <x id="INTERPOLATION" equiv-text="{{data.name | uppercase}}"/> </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pokemons/card-dialog/card-dialog.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8998179362936748717" datatype="html">
+        <source>OK</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pokemons/card-dialog/card-dialog.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2852046693222010802" datatype="html">
+        <source><x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button (click)=&quot;pokemonSetFavorite(pokemon.id)&quot; 
+                    matTooltip=&quot;Mark as favorite&quot;
+                    mat-fab extended&gt;"/><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/><x id="INTERPOLATION" equiv-text="{{pokemon.favorite ? &apos;favorite&apos; : &apos;favorite_border&apos;}}"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Favorite <x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pokemons/card-info/card-info.component.html</context>
+          <context context-type="linenumber">27,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3033623772164647792" datatype="html">
+        <source>Height</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pokemons/card-info/card-info.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5848348023107769657" datatype="html">
+        <source>Weight</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pokemons/card-info/card-info.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5898890027775814801" datatype="html">
+        <source>Number of pokemons per initial letter</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pokemons/pokemon-resume/pokemon-resume.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2937311350146031865" datatype="html">
+        <source>Initial</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pokemons/pokemon-resume/pokemon-resume.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8177873832400820695" datatype="html">
+        <source>Count</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pokemons/pokemon-resume/pokemon-resume.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8829497237648100098" datatype="html">
+        <source>Filter</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pokemons/pokemons-list/pokemons-list.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5787671382322865445" datatype="html">
+        <source>Favorite</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pokemons/pokemons-list/pokemons-list.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8953033926734869941" datatype="html">
+        <source>Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pokemons/pokemons-list/pokemons-list.component.html</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,30 @@
+
+main {
+    /*width: 100%;
+    min-height: 100%;
+    display: flex;*/
+    justify-content: center;
+    padding: 1rem;
+    box-sizing: inherit;
+    position: relative;
+  }
+  .container {
+    display: flex;
+    flex-direction: row;
+  }
+  .margin-card {
+    margin: 5px;
+  }
+  .pokemon-list {
+    flex: 75%;
+    max-height: 750px;
+    overflow: auto;
+  }
+  .pokemon-details {
+    flex: 25%;
+  }
+  @media screen and (max-width:700px) {
+    .container {
+      flex-direction: column-reverse;
+    }
+  }
