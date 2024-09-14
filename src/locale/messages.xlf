@@ -27,28 +27,28 @@
         <source><x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button (click)=&quot;pokemonSetFavorite(pokemon.id)&quot; matTooltip=&quot;Mark as favorite&quot; mat-fab extended&gt;"/><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/><x id="INTERPOLATION" equiv-text="{{pokemon.favorite ? &apos;favorite&apos; : &apos;favorite_border&apos;}}"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Favorite <x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/card-info/card-info.component.html</context>
-          <context context-type="linenumber">30,33</context>
+          <context context-type="linenumber">35,38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3033623772164647792" datatype="html">
         <source>Height</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/card-info/card-info.component.html</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5848348023107769657" datatype="html">
         <source>Weight</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/card-info/card-info.component.html</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="1801071143191568406" datatype="html">
-        <source><x id="INTERPOLATION" equiv-text="{{favorite.name|titlecase}}"/> is my favorite pokemon</source>
+      <trans-unit id="467349178849551526" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{favorite.name|titlecase}}"/> is my favorite</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/favorite-pokemon-bar/favorite-pokemon-bar.component.html</context>
-          <context context-type="linenumber">20</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5898890027775814801" datatype="html">

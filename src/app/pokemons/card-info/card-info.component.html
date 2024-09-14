@@ -21,8 +21,14 @@
                 <img src="{{pokemon.sprites.front_shiny}}">
             </div>
         </div>
+
+        
+        <mat-list class="abilities-list">
+            <mat-list-item ngClass="abilitie-item" *ngFor="let abilitie of pokemon.abilities"><span class="white-text">{{abilitie.name | titlecase}}</span></mat-list-item>
+        </mat-list>
         <mat-chip-set>
-            <mat-chip class="chip-style" *ngFor="let ptype of pokemon.types index as i;" [ngStyle]="{'background-color':typeColor[ptype.name]}" (click)="setStyle(i)">{{ptype.name}}</mat-chip>
+            <mat-chip class="chip-style" *ngFor="let ptype of pokemon.types index as i;"
+                [ngStyle]="{'background-color':typeColor[ptype.name]}" (click)="setStyle(i)"><span class="white-text">{{ptype.name| titlecase}}</span></mat-chip>
         </mat-chip-set>
 
         <h2 class="poke-name">{{pokemon.name|uppercase}}</h2>

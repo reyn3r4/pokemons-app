@@ -5,11 +5,11 @@
       <app-card-info [pokemon]="data"></app-card-info>
     </mat-tab>
     <mat-tab *ngIf="data.sprites.dream_world_front" label="Image">
-      <img [ngStyle]="{width:'300px'}" class="dream-world" src="{{data.sprites.dream_world_front }}" onerror="this.src='images/Pokeball_remix.svg'" alt="" />
+      <img [ngStyle]="{width:'400px'}" class="dream-world" src="{{data.sprites.dream_world_front }}" onerror="this.src='images/Pokeball_remix.svg'" alt="" />
     </mat-tab>
   </mat-tab-group>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
+<mat-dialog-actions align='end'>
   <button mat-button (click)="onNoClick()" i18n>OK</button>
 </mat-dialog-actions>
 

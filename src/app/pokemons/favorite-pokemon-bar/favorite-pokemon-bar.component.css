@@ -44,3 +44,16 @@ img.dream-world {
   top: 5px;
   left: 20px;
 }
+
+div.circle {
+  border: 5px solid black;
+  height: 30px;
+  border-radius: 50%;
+  width: 30px;
+  position: absolute;
+  top: 60%;
+  right: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
