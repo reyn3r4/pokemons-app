@@ -75,9 +75,14 @@
 
 mat-chip.chip-style {
   border-style: solid;
-  border-color: white;
+  border-color: whitesmoke;
   border-width: 1px;
-  color: white !important;
+  color: whitesmoke !important;
+}
+
+mat-chip.chip-style * {
+
+  color: whitesmoke !important;
 }
 
 

@@ -1,14 +1,35 @@
 <mat-card>
-    <mat-card-content class="favorite-card" (click)="openDialog()" [ngStyle]="{'min-height':'35px'}">
-    <img class="dream-world" src="{{favorite.sprites.dream_world_front}}" onerror="this.src='favicon.ico'" alt=""/>
-     <div class="slideshow-container">
-      <div class="favorite-slides fade">
-        <img src="{{favorite.sprites.showdown_front}}" onerror="this.src='favicon.ico'"/>
-      </div>
-      <div *ngIf="favorite.sprites.showdown_back" class="favorite-slides fade">
-        <img src="{{favorite.sprites.showdown_back}}"/>
+  <mat-card-content class="favorite-card" (click)="openDialog()" [ngStyle]="{'min-height':'35px'}">
+    <div [ngStyle]="{width:'100%', height:'150px', 'border-radius': '10px'}">
+      <div [ngStyle]="{width:'100%', height:'70%', 'background-color':barcolor, 'border-radius': '10px 10px 0 0'}"></div>
+      <hr [ngStyle]="{width:'100%', height:'5px', border: '0px', margin:'0px'}" color="black">
+      <div class="circle" [ngStyle]="{
+                                          'border': '5px solid black',
+                                          'background-color': 'lightgrey',
+                                          'height':'20px',
+                                          'border-radius':'50%',
+                                          'width': '20px',
+                                          'position': 'absolute',
+                                          'top': '60%',
+                                          'right':'20%'
+                                          }"></div>
+      <div [ngStyle]="{width:'100%', height:'30%', 'background-color':'lightgray', 'border-radius': '0 0 10px 10px'}">
       </div>
     </div>
-    </mat-card-content>
-  </mat-card>
-  
+
+    <h4 *ngIf="favorite.id" [ngStyle]="{position:'absolute', top:'50px', left:'150px'}" i18n>{{favorite.name|titlecase}} is my favorite pokemon</h4>
+    <img class="dream-world" src="{{favorite.sprites.dream_world_front ? favorite.sprites.dream_world_front : '../../../assets/images/poke.svg'}}" onerror="this.src='images/Pokeball_remix.svg'" alt="" />
+    <div [ngStyle]="{display:favorite.sprites.showdown_front?'inherit':'none'}" class="slideshow-container">
+      <div class="favorite-slides fade">
+        <img src="{{favorite.sprites.showdown_front}}" onerror="this.src='../../../assets/images/Pokeball_remix.svg'" />
+      </div>
+      <div *ngIf="favorite.sprites.showdown_back" [ngStyle]="{display:'none'}" class="favorite-slides fade">
+        <img src="{{favorite.sprites.showdown_back}}" />
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+
+
+

@@ -9,38 +9,50 @@
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="3242471372800509215" datatype="html">
+        <source><x id="START_TAG_APP_CARD_INFO" ctype="x-app_card_info" equiv-text="&lt;app-card-info [pokemon]=&quot;data&quot;&gt;"/><x id="CLOSE_TAG_APP_CARD_INFO" ctype="x-app_card_info" equiv-text="&lt;/app-card-info&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pokemons/card-dialog/card-dialog.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="8998179362936748717" datatype="html">
         <source>Aceptar</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/card-dialog/card-dialog.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2852046693222010802" datatype="html">
-        <source><x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button (click)=&quot;pokemonSetFavorite(pokemon.id)&quot; 
-                    matTooltip=&quot;Hacer Favorito&quot;
-                    mat-fab extended&gt;"/><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/><x id="INTERPOLATION" equiv-text="{{pokemon.favorite ? &apos;favorite&apos; : &apos;favorite_border&apos;}}"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Favorito <x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/></source>
+        <source><x id="START_TAG_BUTTON" ctype="x-button" equiv-text="&lt;button (click)=&quot;pokemonSetFavorite(pokemon.id)&quot; matTooltip=&quot;Hacer favorito&quot; mat-fab extended&gt;"/><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/><x id="INTERPOLATION" equiv-text="{{pokemon.favorite ? &apos;favorite&apos; : &apos;favorite_border&apos;}}"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Favorito <x id="CLOSE_TAG_BUTTON" ctype="x-button" equiv-text="&lt;/button&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/card-info/card-info.component.html</context>
-          <context context-type="linenumber">27,32</context>
+          <context context-type="linenumber">30,33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3033623772164647792" datatype="html">
         <source>Altura</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/card-info/card-info.component.html</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5848348023107769657" datatype="html">
         <source>Peso</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/card-info/card-info.component.html</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1801071143191568406" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{favorite.name|titlecase}}"/> es mi pokemon favorito</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pokemons/favorite-pokemon-bar/favorite-pokemon-bar.component.html</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5898890027775814801" datatype="html">
-        <source>Número de pokemons por letra inicial</source>
+        <source>Cantidad de pokemons por inicial</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/pokemon-resume/pokemon-resume.component.html</context>
           <context context-type="linenumber">7</context>
@@ -54,14 +66,14 @@
         </context-group>
       </trans-unit>
       <trans-unit id="8177873832400820695" datatype="html">
-        <source>Cantidad</source>
+        <source>Count</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/pokemon-resume/pokemon-resume.component.html</context>
           <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8829497237648100098" datatype="html">
-        <source>Filtrar</source>
+        <source>Filtro</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/pokemons-list/pokemons-list.component.html</context>
           <context context-type="linenumber">6</context>
@@ -71,14 +83,14 @@
         <source>Favorito</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/pokemons-list/pokemons-list.component.html</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8953033926734869941" datatype="html">
         <source>Nombre</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/pokemons-list/pokemons-list.component.html</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
     </body>

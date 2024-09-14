@@ -1,11 +1,11 @@
 div.slideshow-container {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
+  background-color: transparent;
+  position: absolute;
+  bottom:2px;
+  right:10px;
 }
 
 .favorite-slides {
-  display: none;
   height: 50px;
   width: 50px;
 }
@@ -32,6 +32,7 @@ div.slideshow-container {
 
 .favorite-card {
   display: inline-flex !important;
+  padding:0px !important;
 }
 
 img.dream-world {
@@ -40,6 +41,6 @@ img.dream-world {
   width: 125px;
   max-height: 150px;
   z-index: 100;
-  top: -50px;
-  left: auto;
+  top: 5px;
+  left: 20px;
 }

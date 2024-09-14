@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from 'src/app/material/material.module';
-import { Pokemon } from 'src/app/models/pokemon.model';
+import { Pokemon, TypeColors } from 'src/app/models/pokemon.model';
 
 @Component({
   selector: 'app-card-info',
@@ -39,24 +39,7 @@ export class CardInfoComponent {
       },
       abilities: []
     };
-    this.typeColor = {
-      bug: "#1d8b8b",
-      dragon: "#c79803",
-      electric: "#fbc700",
-      fairy: "#FF0069",
-      fighting: "#df005c",
-      fire: "#f0932b",
-      flying: "#24bfbf",
-      grass: "#00b894",
-      ground: "#EFB549",
-      ghost: "#a55eea",
-      ice: "#74b9ff",
-      normal: "#95afc0",
-      poison: "#6c5ce7",
-      psychic: "#a29bfe",
-      rock: "#2d3436",
-      water: "#0190FF",
-    };
+    this.typeColor = TypeColors;
     this.backStyle = 0;
   }
 
@@ -71,21 +54,17 @@ export class CardInfoComponent {
 
   }
 
-  ngAfterViewInit() {let slideIndex = 0;
+  ngAfterViewInit() {
+    let slideIndex = 0;
     let slides = this.slidescontainer.nativeElement.children as HTMLCollectionOf<HTMLElement>;
-    showSlides();
+    //let slides = document.getElementsByClassName("pokemon-img-slides") as HTMLCollectionOf<HTMLElement>;
     function showSlides() {
-      let i;
-      //let slides = document.getElementsByClassName("pokemon-img-slides") as HTMLCollectionOf<HTMLElement>;
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) slideIndex = 1;
-      slides[slideIndex - 1].style.display = "block";
+      for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+      if (slideIndex >= slides.length) slideIndex = 0;
+      slides[slideIndex++].style.display = "block";
       setTimeout(showSlides, 2000); // Change image every 2 seconds
     }
-
+    showSlides();
   }
 
 

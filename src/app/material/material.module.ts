@@ -13,6 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatTabsModule} from '@angular/material/tabs';
 import {MatChipsModule} from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -33,6 +34,7 @@ const MaterialComponents = [
   MatPaginatorModule,
   MatDialogModule,
   MatChipsModule,
+  MatTabsModule,
   MatAutocompleteModule,
   FormsModule,
   ReactiveFormsModule

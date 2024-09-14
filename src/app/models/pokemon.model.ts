@@ -1,3 +1,22 @@
+export const TypeColors = {
+    bug: "#1d8b8b",
+    dragon: "#c79803",
+    electric: "#fbc700",
+    fairy: "#FF0069",
+    fighting: "#df005c",
+    fire: "#f0932b",
+    flying: "#24bfbf",
+    grass: "#00b894",
+    ground: "#EFB549",
+    ghost: "#a55eea",
+    ice: "#74b9ff",
+    normal: "#95afc0",
+    poison: "#6c5ce7",
+    psychic: "#a29bfe",
+    rock: "#2d3436",
+    water: "#0190FF",
+    steel: "#424242"
+  };
 export interface Type {
     name: string
 }
