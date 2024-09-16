@@ -7,7 +7,7 @@ import { Sort } from '@angular/material/sort';
 export class GenPokemonsResumePipe implements PipeTransform {
   transform(pokemons: any[], sort: Sort): any[] {
     let initials = pokemons.map(pok => {
-      return { ...pok, initial: pok.name.charAt(0).toUpperCase() };
+      return { ...pok, initial: pok.name.charAt(0) };
     }).reduce((prev, cur) => {
       if (prev.length) {
         const i = prev.findIndex((element: any) => element.initial === cur.initial);
@@ -32,9 +32,4 @@ export class GenPokemonsResumePipe implements PipeTransform {
       });
     return initials;
   }
-
-
-
-
-
 }

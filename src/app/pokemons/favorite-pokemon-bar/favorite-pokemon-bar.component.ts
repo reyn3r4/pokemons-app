@@ -1,12 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { Pokemon, TypeColors } from 'src/app/models/pokemon.model';
 import { PokemonsService } from 'src/app/services/pokemons-service.service';
-
-
-
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { MaterialModule } from 'src/app/material/material.module';
-import { CardInfoComponent } from '../card-info/card-info.component';
+import {  MatDialog } from '@angular/material/dialog';
 import { CardDialogComponent } from '../card-dialog/card-dialog.component';
 
 @Component({

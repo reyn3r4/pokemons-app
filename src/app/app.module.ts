@@ -14,6 +14,8 @@ import { PokemonResumeComponent } from './pokemons/pokemon-resume/pokemon-resume
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { GenPokemonsResumePipe } from './pipes/gen-pokemons-resume.pipe';
+import { ImgNotFoundDirective } from './directives/img-not-found.directive';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { GenPokemonsResumePipe } from './pipes/gen-pokemons-resume.pipe';
     PokemonsListComponent,
     FavoritePokemonBarComponent,
     PokemonResumeComponent,
-    GenPokemonsResumePipe
+    GenPokemonsResumePipe,
+    ImgNotFoundDirective
   ],
   imports: [
     BrowserModule,

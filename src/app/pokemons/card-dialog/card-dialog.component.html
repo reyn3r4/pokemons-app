@@ -5,7 +5,7 @@
       <app-card-info [pokemon]="data"></app-card-info>
     </mat-tab>
     <mat-tab *ngIf="data.sprites.dream_world_front" label="Image">
-      <img [ngStyle]="{width:'400px'}" class="dream-world" src="{{data.sprites.dream_world_front }}" onerror="this.src='images/Pokeball_remix.svg'" alt="" />
+      <img [ngStyle]="{width:'400px'}" class="dream-world" src="{{data.sprites.dream_world_front }}" appImgNotFound alt="" />
     </mat-tab>
   </mat-tab-group>
 </mat-dialog-content>
