@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { PokemonsService } from '../services/pokemons-service.service';
 import { Pokemon } from '../models/pokemon.model';
+import { Store } from '@ngrx/store';
+import { setFavoritePokemon } from '../store/actions';
 
 @Component({
   selector: 'app-pokemons',
@@ -11,7 +13,7 @@ import { Pokemon } from '../models/pokemon.model';
 export class PokemonsComponent {
   selected:Pokemon;
   favorite:number;
-  constructor(private pokemonService: PokemonsService) {
+  constructor(private pokemonService: PokemonsService, private store:Store) {
     this.favorite=0;
     this.selected={
       id:0,
@@ -45,9 +47,17 @@ export class PokemonsComponent {
   pokemonSelected(id:number){
     this.pokemonService.loadPokemon(id);
   }
+  /*
+  Se puede usar el service o el store NGRX
+  */
   changeFavorite(id:number){
-    this.favorite=id;
-    this.pokemonService.loadFavorite(id);
+    let that=this;
+    that.favorite=id;
+    that.pokemonService.loadFavorite(id);
+    that.pokemonService.favorite.subscribe(function(pfavorite){
+      that.favorite=pfavorite.id;
+     // that.store.dispatch(setFavoritePokemon({favorite: pfavorite as Pokemon}));
+    })
   }
 }
 

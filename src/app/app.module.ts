@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { GenPokemonsResumePipe } from './pipes/gen-pokemons-resume.pipe';
 import { ImgNotFoundDirective } from './directives/img-not-found.directive';
+import { favoriteReducer, favoriteStateFeature } from './store/reducers';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { ImgNotFoundDirective } from './directives/img-not-found.directive';
     MaterialModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({}, {}),
+    StoreModule.forFeature(favoriteStateFeature , favoriteReducer),
     CardInfoComponent
   ],
   providers: [],

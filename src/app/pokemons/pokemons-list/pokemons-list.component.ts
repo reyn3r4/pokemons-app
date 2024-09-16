@@ -6,6 +6,8 @@ import { ListPokemon, Pokemon } from 'src/app/models/pokemon.model';
 import { PokemonsService } from 'src/app/services/pokemons-service.service';
 import { debounceTime, map, Observable, startWith } from 'rxjs';
 import { FormControl } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { getFavorite } from 'src/app/store/selectors';
 
 @Component({
   selector: 'app-pokemons-list',
@@ -23,7 +25,7 @@ export class PokemonsListComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @Output() setSelected = new EventEmitter<number>;
   @Output() setFavorite = new EventEmitter<number>;
-  constructor(private pokemonService: PokemonsService) {
+  constructor(private pokemonService: PokemonsService, private store:Store) {
     this.displayedColumns = ['id', 'icon', 'favorite', 'name'];
     this.pokemonsList = [];
     this.selected = 0;
@@ -40,11 +42,19 @@ export class PokemonsListComponent {
       this.pokemonsList=this.pokemonService.getPokemonsList();
       this.dataSource.data = this.pokemonsList;
     });
+    this.store.select(getFavorite).subscribe((pFav:Pokemon)=>{
+      this.pokemonsList=this.pokemonService.getPokemonsList();
+      this.dataSource.data = this.pokemonsList;
+    });
+
     this.filteredOptions = this.myControl.valueChanges.pipe(
       debounceTime(500),
       startWith(''),
       map(value => this.formFilter(value|| '')),
     );
+  }
+  ngOnDestroy(){
+    this.pokemonService.selectPokemonAdvice.unsubscribe();
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
