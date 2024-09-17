@@ -42,6 +42,12 @@ export class PokemonsComponent {
     this.pokemonService.selectPokemonAdvice.subscribe(loaded => {
       this.selected=loaded;
     });
+
+    let that=this;
+    this.pokemonService.favorite.subscribe(function(pfavorite){
+      that.favorite=pfavorite.id;
+    });
+
   }
 
   pokemonSelected(id:number){
@@ -51,13 +57,7 @@ export class PokemonsComponent {
   Se puede usar el service o el store NGRX
   */
   changeFavorite(id:number){
-    let that=this;
-    that.favorite=id;
-    that.pokemonService.loadFavorite(id);
-    that.pokemonService.favorite.subscribe(function(pfavorite){
-      that.favorite=pfavorite.id;
-     // that.store.dispatch(setFavoritePokemon({favorite: pfavorite as Pokemon}));
-    })
+    this.pokemonService.loadFavorite(id);
   }
 }
 

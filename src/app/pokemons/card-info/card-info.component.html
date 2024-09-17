@@ -20,9 +20,7 @@
                 [ngClass]="['pokemon-img-slides','fade']">
                 <img src="{{pokemon.sprites.front_shiny}}">
             </div>
-        </div>
-
-        
+        </div>        
         <mat-list class="abilities-list">
             <mat-list-item ngClass="abilitie-item" *ngFor="let abilitie of pokemon.abilities"><span class="white-text">{{abilitie.name | titlecase}}</span></mat-list-item>
         </mat-list>

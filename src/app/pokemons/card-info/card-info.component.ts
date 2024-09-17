@@ -13,7 +13,6 @@ import { Pokemon, TypeColors } from 'src/app/models/pokemon.model';
 export class CardInfoComponent {
   @Input() pokemon!: Pokemon;
   @Output() setFavorite = new EventEmitter<number>;
-  //@ViewChild('slidescontainer') slidescontainer!: ElementRef;
   @ViewChild("slidescontainer") private slidescontainer!: ElementRef<HTMLElement>;
   typeColor: { [key: string]: string };
   backStyle: number;
@@ -41,10 +40,7 @@ export class CardInfoComponent {
     };
     this.typeColor = TypeColors;
     this.backStyle = 0;
-  }
-
-
-  
+  }  
 
   pokemonSetFavorite(id: number) {
     this.setFavorite.emit(id);
@@ -62,7 +58,7 @@ export class CardInfoComponent {
       for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
       if (slideIndex >= slides.length) slideIndex = 0;
       slides[slideIndex++].style.display = "block";
-      setTimeout(showSlides, 2000); // Change image every 2 seconds
+      setTimeout(showSlides, 2000);
     }
     showSlides();
   }

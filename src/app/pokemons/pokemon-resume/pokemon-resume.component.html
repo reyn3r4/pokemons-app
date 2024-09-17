@@ -1,14 +1,10 @@
 <mat-card appearance="outlined">
     <mat-card-content>
-
-
         <mat-toolbar>
             <mat-toolbar-row>
                 <span i18n>Number of pokemons per initial letter</span>
             </mat-toolbar-row>
         </mat-toolbar>
-
-
         <div class="table-container mat-elevation-z8">
             <table mat-table matSort  [dataSource]="(listToResume$ | async)! | genPokemonsResume:sort" (matSortChange)="announceSortChange($event)">
                 <ng-container matColumnDef="initial">
@@ -23,6 +19,5 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
         </div>
-
     </mat-card-content>
 </mat-card>

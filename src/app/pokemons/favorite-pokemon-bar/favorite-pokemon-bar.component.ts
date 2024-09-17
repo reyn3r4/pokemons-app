@@ -3,6 +3,9 @@ import { Pokemon, TypeColors } from 'src/app/models/pokemon.model';
 import { PokemonsService } from 'src/app/services/pokemons-service.service';
 import {  MatDialog } from '@angular/material/dialog';
 import { CardDialogComponent } from '../card-dialog/card-dialog.component';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { getFavorite } from 'src/app/store/selectors';
 
 @Component({
   selector: 'app-favorite-pokemon-bar',
@@ -11,10 +14,12 @@ import { CardDialogComponent } from '../card-dialog/card-dialog.component';
 })
 export class FavoritePokemonBarComponent {
   favorite: Pokemon;
+  favorite$: Observable<Pokemon> = this.store.select(getFavorite);
   slideIndex: number;
   typeColor: { [key: string]: string };
   barcolor: string;
-  constructor(private pokemonService: PokemonsService, public dialog: MatDialog) {
+  constructor(private pokemonService: PokemonsService, public dialog: MatDialog,
+    private store: Store) {
     this.favorite = {
       id: 0,
       url: '',
@@ -36,14 +41,22 @@ export class FavoritePokemonBarComponent {
       },
       abilities: []
     };
+
+
     this.slideIndex = 0;
     this.typeColor = TypeColors;
     this.barcolor = 'red';
   }
 
   ngOnInit(): void {
-    this.pokemonService.favorite.subscribe((pFavorite) => {
+    /*this.pokemonService.favorite.subscribe((pFavorite) => {
+      console.log(pFavorite);
       this.favorite = pFavorite;
+      this.barcolor = this.favorite && this.favorite.types && this.favorite.types[0] && this.favorite.types[0].name ? this.typeColor[this.favorite.types[0].name] : '#b12424';
+    });*/
+    this.favorite$.subscribe((pokemon) => {
+      //console.log(pokemon);
+      this.favorite=pokemon;
       this.barcolor = this.favorite && this.favorite.types && this.favorite.types[0] && this.favorite.types[0].name ? this.typeColor[this.favorite.types[0].name] : '#b12424';
     });
   }

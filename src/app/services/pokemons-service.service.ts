@@ -3,6 +3,8 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from '../../environments/environment';
 import { ListPokemon, Pokemon, Sprites, Type } from '../models/pokemon.model';
 import { BehaviorSubject } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { setFavoritePokemon } from '../store/actions';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,7 @@ export class PokemonsService {
   private loadAllPokemonsAdvice: BehaviorSubject<ListPokemon[]>;  
   public selectPokemonAdvice: BehaviorSubject<Pokemon>;
   public favoritePokemonAdvice: BehaviorSubject<Pokemon>;
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private store:Store) {
     this.aServiceURL = environment.pokemonsApiUrl;
     this.defaultP = {
       id: 0,
@@ -107,10 +109,9 @@ export class PokemonsService {
     return this.aListPokemons.find(p => p.name == pNameOrId || p.id === pNameOrId) as Pokemon;
   }
   private setFavorite(pId:number){
-    this.aListPokemons.forEach(function(pok){
+    this.aListPokemons.forEach(function(pok){      
       pok.favorite=pok.id==pId;
-    });
-    
+    }); 
   }
 
   loadAllPokemons(){
@@ -166,6 +167,7 @@ export class PokemonsService {
     if (favoriteLoaded && favoriteLoaded.height) {
       this.setFavorite(favoriteLoaded.id);
       this.favoritePokemonAdvice.next(favoriteLoaded);
+      this.store.dispatch(setFavoritePokemon({favorite: { ...favoriteLoaded }}));
     } else {
       this.http.get(`${this.aServiceURL}/${pNameOrId}`).subscribe((data) => {
         const resPok = JSON.parse(JSON.stringify(data));
@@ -190,6 +192,7 @@ export class PokemonsService {
           this.updatePokemonData(resPok.name, pokemon);
           this.setFavorite(pokemon.id);
           this.favoritePokemonAdvice.next(pokemon);
+          this.store.dispatch(setFavoritePokemon({favorite: { ...pokemon }}));
         }
       });
     }
