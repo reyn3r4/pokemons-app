@@ -31,7 +31,7 @@
 
         <h2 class="poke-name">{{pokemon.name|uppercase}}</h2>
         <div class="types" i18n>
-            <button (click)="pokemonSetFavorite(pokemon.id)" matTooltip="Mark as favorite" mat-fab extended>
+            <button (click)="pokemonSetFavorite(pokemon.id)" matTooltip="Mark as favorite" mat-fab extended [ngStyle]="{'background-color':'#00000033'}">
                 <mat-icon>{{pokemon.favorite ? 'favorite' : 'favorite_border'}}</mat-icon>
                 Favorite
             </button>

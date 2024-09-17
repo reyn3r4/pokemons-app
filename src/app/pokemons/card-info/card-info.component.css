@@ -84,7 +84,7 @@ mat-chip.chip-style {
 
 mat-list.abilities-list {
   position: absolute;
-  top: 10px;
+  top: 20px;
 }
 
 mat-list.abilities-list mat-list-item.abilitie-item {
