@@ -13,6 +13,8 @@ import { FavoritePokemonBarComponent } from './pokemons/favorite-pokemon-bar/fav
 import { PokemonResumeComponent } from './pokemons/pokemon-resume/pokemon-resume.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from 'src/environments/environment';
 import { GenPokemonsResumePipe } from './pipes/gen-pokemons-resume.pipe';
 import { ImgNotFoundDirective } from './directives/img-not-found.directive';
 import { favoriteReducer, favoriteStateFeature } from './store/reducers';
@@ -37,6 +39,7 @@ import { favoriteReducer, favoriteStateFeature } from './store/reducers';
     BrowserAnimationsModule,
     StoreModule.forRoot({}, {}),
     StoreModule.forFeature(favoriteStateFeature , favoriteReducer),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     CardInfoComponent
   ],
   providers: [],

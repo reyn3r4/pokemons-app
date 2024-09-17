@@ -1,7 +1,7 @@
-import { Action, on } from "@ngrx/store";
+import { on } from "@ngrx/store";
 import { createReducer } from "@ngrx/store";
-import { Pokemon, Type, Abilitie } from "../models/pokemon.model";
-import { SET_FAVORITE, setFavoritePokemon } from "./actions";
+import { Pokemon } from "../models/pokemon.model";
+import { setFavoritePokemon } from "./actions";
 
 export const favoriteStateFeature = "favoritePokemonState";
 export interface favoriteState {
@@ -14,7 +14,7 @@ export const initialFavoriteState = {
         name: '',
         icon: '',
         favorite: true,
-        types: {},
+        types: Array(),
         base_experience: 0,
         height: 0,
         weight: 0,
@@ -27,7 +27,7 @@ export const initialFavoriteState = {
             showdown_back: '',
             dream_world_front: ''
         },
-        abilities: {}
+        abilities: Array()
     }
 }
 

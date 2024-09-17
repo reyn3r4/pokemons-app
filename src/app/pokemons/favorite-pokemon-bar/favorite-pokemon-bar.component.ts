@@ -6,6 +6,7 @@ import { CardDialogComponent } from '../card-dialog/card-dialog.component';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { getFavorite } from 'src/app/store/selectors';
+import { initialFavoriteState } from 'src/app/store/reducers';
 
 @Component({
   selector: 'app-favorite-pokemon-bar',
@@ -41,8 +42,6 @@ export class FavoritePokemonBarComponent {
       },
       abilities: []
     };
-
-
     this.slideIndex = 0;
     this.typeColor = TypeColors;
     this.barcolor = 'red';
