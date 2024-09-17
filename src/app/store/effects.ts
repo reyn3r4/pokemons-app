@@ -14,7 +14,7 @@ export class FavoriteSelectedEffects {
         this.actions$.pipe(
             ofType(setFavoritePokemon),
             tap((action)=>{
-                console.log(action);
+                console.log(action.type);
             })
         ), {dispatch:false});
 }
