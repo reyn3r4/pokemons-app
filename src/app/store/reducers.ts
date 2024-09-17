@@ -3,8 +3,8 @@ import { createReducer } from "@ngrx/store";
 import { Pokemon } from "../models/pokemon.model";
 import { setFavoritePokemon } from "./actions";
 
-export const favoriteStateFeature = "favoritePokemonState";
-export interface favoriteState {
+export const appStateFeature = "appPokemonState";
+export interface appState {
     favorite: Pokemon
 }
 export const initialFavoriteState = {
@@ -34,7 +34,6 @@ export const initialFavoriteState = {
 export const favoriteReducer = createReducer(
     initialFavoriteState,
     on(setFavoritePokemon, function (currentState, action) {
-        console.log(currentState, action);
         return {
             favorite: action.favorite
         };

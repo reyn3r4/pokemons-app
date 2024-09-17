@@ -17,7 +17,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { GenPokemonsResumePipe } from './pipes/gen-pokemons-resume.pipe';
 import { ImgNotFoundDirective } from './directives/img-not-found.directive';
-import { favoriteReducer, favoriteStateFeature } from './store/reducers';
+import { favoriteReducer, appStateFeature } from './store/reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { FavoriteSelectedEffects } from './store/effects';
 
 
 @NgModule({
@@ -38,8 +40,10 @@ import { favoriteReducer, favoriteStateFeature } from './store/reducers';
     MaterialModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({}, {}),
-    StoreModule.forFeature(favoriteStateFeature , favoriteReducer),
+    StoreModule.forFeature(appStateFeature , favoriteReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([]),
+   // EffectsModule.forFeature([FavoriteSelectedEffects]),
     CardInfoComponent
   ],
   providers: [],

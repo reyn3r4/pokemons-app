@@ -1,10 +1,10 @@
-import {createFeatureSelector, createSelector} from "@ngrx/store";
-import {favoriteStateFeature, favoriteState} from "./reducers";
-import {Pokemon} from "../models/pokemon.model";
+import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { appStateFeature, appState } from "./reducers";
+import { Pokemon } from "../models/pokemon.model";
 
-const favoriteState = createFeatureSelector<favoriteState>(favoriteStateFeature)
+const appState = createFeatureSelector<appState>(appStateFeature);
 
 export const getFavorite = createSelector(
-    favoriteState,
-  (favorite):Pokemon => favorite.favorite
+  appState,
+  (favorite): Pokemon => favorite.favorite
 );

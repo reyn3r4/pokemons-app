@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { environment } from '../../environments/environment';
 import { ListPokemon, Pokemon, Sprites, Type } from '../models/pokemon.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { setFavoritePokemon } from '../store/actions';
+import { ACTIONS, setFavoritePokemon } from '../store/actions';
 
 @Injectable({
   providedIn: 'root'
@@ -192,9 +192,14 @@ export class PokemonsService {
           this.updatePokemonData(resPok.name, pokemon);
           this.setFavorite(pokemon.id);
           this.favoritePokemonAdvice.next(pokemon);
-          this.store.dispatch(setFavoritePokemon({favorite: { ...pokemon }}));
+          //this.store.dispatch(setFavoritePokemon({favorite: { ...pokemon }}));
+          this.store.dispatch({type:ACTIONS.SET_FAVORITE,favorite: { ...pokemon }});
         }
       });
     }
+  }
+  loadAbilities(poke:Pokemon)
+  {
+    return this.http.get(this.aServiceURL.replace('pokemon',`/ability/${poke.abilities[0].name}`)) as Observable<any>;
   }
 }

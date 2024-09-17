@@ -6,6 +6,7 @@ import { CardDialogComponent } from '../card-dialog/card-dialog.component';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { getFavorite } from 'src/app/store/selectors';
+import {MatRippleModule} from '@angular/material/core';
 import { initialFavoriteState } from 'src/app/store/reducers';
 
 @Component({
@@ -19,6 +20,21 @@ export class FavoritePokemonBarComponent {
   slideIndex: number;
   typeColor: { [key: string]: string };
   barcolor: string;
+
+
+
+
+  centered = false;
+  disabled = false;
+  unbounded = false;
+
+  radius: number=500;
+  color: string='red';
+
+
+
+
+
   constructor(private pokemonService: PokemonsService, public dialog: MatDialog,
     private store: Store) {
     this.favorite = {
