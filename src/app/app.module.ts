@@ -43,7 +43,7 @@ import { FavoriteSelectedEffects } from './store/effects';
     StoreModule.forFeature(appStateFeature , favoriteReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
-   // EffectsModule.forFeature([FavoriteSelectedEffects]),
+    EffectsModule.forFeature([FavoriteSelectedEffects]),
     CardInfoComponent
   ],
   providers: [],

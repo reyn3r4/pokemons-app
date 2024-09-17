@@ -9,11 +9,3 @@ export const setFavoritePokemon = createAction(
                                     ACTIONS.SET_FAVORITE,
                                     props<{favorite: Pokemon}>()
 );
-
-
-
-
-export const loadAbilities = createAction(
-    ACTIONS.SET_FAVORITE,
-    props<{favorite: Pokemon}>()
-);
