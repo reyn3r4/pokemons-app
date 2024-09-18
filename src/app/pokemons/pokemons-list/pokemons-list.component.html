@@ -6,13 +6,17 @@
                 <mat-label i18n>Filter</mat-label>
                 <input matInput
                         (keyup)="onKeyUp($event)"
-                        placeholder="Ex. pika"
+                        placeholder="Ej. pika"
                         [formControl]="myControl"
                         [matAutocomplete]="auto">
+                        <button mat-icon-button matSuffix (click)="clearFilter($event)" [attr.aria-label]="'Clear'" >
+                            <mat-icon>clear</mat-icon>
+                          </button>
                 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
                     <!--  @for (option of filteredOptions | async; track option) {} -->
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option"
                         (click)="applyFilter(option)">{{option}}</mat-option>
+                    
                 </mat-autocomplete>
             </mat-form-field>
             <div class="table-container">

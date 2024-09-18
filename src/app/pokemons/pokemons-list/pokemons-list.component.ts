@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { MaterialModule } from 'src/app/material/material.module';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -48,8 +48,8 @@ export class PokemonsListComponent {
     });
 
     this.filteredOptions = this.myControl.valueChanges.pipe(
-      debounceTime(500),
-      startWith(''),
+      /*debounceTime(500),*/
+      //startWith(''),
       map(value => this.formFilter(value|| '')),
     );
   }
@@ -67,11 +67,14 @@ export class PokemonsListComponent {
     }).filter(option => option.toLowerCase().includes(val.toLowerCase()));
   }
 
-
-
   onKeyUp(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.applyFilter(filterValue);
+  }
+
+  clearFilter(event: Event){
+    this.myControl.reset();
+    this.applyFilter('');
   }
 
   applyFilter(pfilter: string) {

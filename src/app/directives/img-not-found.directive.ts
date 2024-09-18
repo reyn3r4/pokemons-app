@@ -1,6 +1,7 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
 @Directive({
-  selector: '[appImgNotFound]'
+  selector: '[appImgNotFound]',
+  //standalone:true
 })
 export class ImgNotFoundDirective {
   constructor(private elementImg: ElementRef) { }
