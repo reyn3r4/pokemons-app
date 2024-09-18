@@ -21,7 +21,8 @@ export class GenPokemonsResumePipe implements PipeTransform {
     }, []);
     if (sort.direction)
       initials = initials.sort(function (a: any, b: any) {
-        if (sort.active == 'initial')
+        return (a[sort.active] < b[sort.active] ? -1 : 1) * (sort.direction == 'asc' ? 1 : -1);
+        /*if (sort.active == 'initial')
           if (sort.direction == 'asc')
             return a.initial > b.initial ? 1 : a.initial < b.initial ? -1 : 0;
           else return a.initial < b.initial ? 1 : a.initial > b.initial ? -1 : 0;
@@ -29,7 +30,7 @@ export class GenPokemonsResumePipe implements PipeTransform {
           if (sort.direction == 'asc')
             return a.count > b.count ? 1 : a.count < b.count ? -1 : 0;
           else return a.count < b.count ? 1 : a.count > b.count ? -1 : 0;
-        }
+        }*/
       });
     return initials;
   }

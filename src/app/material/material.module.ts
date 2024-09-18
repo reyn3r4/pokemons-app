@@ -19,6 +19,7 @@ import {MatListModule} from '@angular/material/list';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { getDutchPaginatorIntl } from './dutch-paginator-int';
+import { MatRippleModule } from '@angular/material/core';
 
 
 const MaterialComponents = [  
@@ -40,7 +41,8 @@ const MaterialComponents = [
   MatTabsModule,
   MatAutocompleteModule,
   FormsModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  MatRippleModule
 ]
 
 @NgModule({

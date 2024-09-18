@@ -12,7 +12,7 @@ import { getFavorite } from 'src/app/store/selectors';
 @Component({
   selector: 'app-pokemons-list',
   templateUrl: './pokemons-list.component.html',
-  styleUrls: ['./pokemons-list.component.css']
+  styleUrls: ['./pokemons-list.component.css'],
 })
 export class PokemonsListComponent {
   selected: number;

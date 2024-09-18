@@ -20,21 +20,6 @@ export class FavoritePokemonBarComponent {
   slideIndex: number;
   typeColor: { [key: string]: string };
   barcolor: string;
-
-
-
-
-  centered = false;
-  disabled = false;
-  unbounded = false;
-
-  radius: number=500;
-  color: string='red';
-
-
-
-
-
   constructor(private pokemonService: PokemonsService, public dialog: MatDialog,
     private store: Store) {
     this.favorite = {
