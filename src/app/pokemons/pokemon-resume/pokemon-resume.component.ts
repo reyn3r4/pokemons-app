@@ -14,6 +14,7 @@ export class PokemonResumeComponent {
   private _liveAnnouncer = inject(LiveAnnouncer);
   displayedColumns: string[];
   listToResume$: Observable<ListPokemon[]>;
+//  listPokemons:ListPokemon[];
   sort: Sort;
   constructor(private pokemonService: PokemonsService) {
     this.listToResume$ = this.pokemonService.allLoaded;
@@ -22,12 +23,16 @@ export class PokemonResumeComponent {
       active: 'initial',
       direction: 'asc',
     };
+  //  this.listPokemons=[];
   }
 
-  ngOnInit(): void {
+ /* ngOnInit(): void {
+    this.listToResume$.subscribe(list=>{
+      this.listPokemons=list;
+    });
   }
   ngAfterViewInit() {
-  }
+  }*/
   announceSortChange(sortState: Sort) {
     this.sort = sortState;
   }

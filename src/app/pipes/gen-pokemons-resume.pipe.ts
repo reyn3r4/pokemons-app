@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 
 @Pipe({
-  name: 'genPokemonsResume'
+  name: 'genPokemonsResume',
+  pure:true
 })
 export class GenPokemonsResumePipe implements PipeTransform {
   transform(pokemons: any[], sort: Sort): any[] {

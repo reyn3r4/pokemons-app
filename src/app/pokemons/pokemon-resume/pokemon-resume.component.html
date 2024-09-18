@@ -6,6 +6,7 @@
             </mat-toolbar-row>
         </mat-toolbar>
         <div class="table-container mat-elevation-z8">
+            <!-- <table mat-table matSort  [dataSource]="listPokemons | genPokemonsResume:sort" (matSortChange)="announceSortChange($event)"> -->
             <table mat-table matSort  [dataSource]="(listToResume$ | async)! | genPokemonsResume:sort" (matSortChange)="announceSortChange($event)">
                 <ng-container matColumnDef="initial">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by initial" i18n>Initial</th>
