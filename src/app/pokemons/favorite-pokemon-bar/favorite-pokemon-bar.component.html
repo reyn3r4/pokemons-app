@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="types-container">
-      <app-pokeball *ngFor="let ptype of favorite.types;" [color]="typeColor[ptype.name]" [name]="ptype.name" (click)="setColor(typeColor[ptype.name])"/>
+      <app-pokeball [ngStyle]="{width:'30%'}" *ngFor="let ptype of favorite.types;" [color]="typeColor[ptype.name]" [name]="ptype.name" (click)="setColor(typeColor[ptype.name])"/>
     </div>
   </mat-card-content>
 </mat-card>

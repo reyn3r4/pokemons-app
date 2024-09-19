@@ -2,13 +2,14 @@ import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from 'src/app/material/material.module';
 import { Pokemon, TypeColors } from 'src/app/models/pokemon.model';
+import { PokeballComponent } from '../pokeball/pokeball.component';
 
 @Component({
   selector: 'app-card-info',
   templateUrl: './card-info.component.html',
   styleUrls: ['./card-info.component.css'],
   standalone: true,
-  imports: [CommonModule, MaterialModule]
+  imports: [CommonModule, MaterialModule, PokeballComponent]
 })
 export class CardInfoComponent {
   @Input() pokemon!: Pokemon;
