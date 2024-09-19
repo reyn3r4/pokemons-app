@@ -1,0 +1,10 @@
+mat-dialog-content.mat-mdc-dialog-content.pokemon-dialog-content{
+    padding:0px;
+}
+/*
+mat-dialog-content.mat-mdc-dialog-content.pokemon-dialog-content app-card-info > mat-card > mat-card-content*/
+.pokemon-card-content {
+    min-width: 400px !important;
+    padding: 20px  !important;
+    border-radius: 0px  !important;
+}

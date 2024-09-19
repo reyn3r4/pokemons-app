@@ -1,5 +1,5 @@
 <h2 [ngStyle]="{'background-color': color, color:'whitesmoke'}" mat-dialog-title i18n> Details {{data.name | uppercase}} </h2>
-<mat-dialog-content class="mat-typography"> 
+<mat-dialog-content class="mat-typography pokemon-dialog-content"> 
   <mat-tab-group>
     <mat-tab label="Card" i18n>
       <app-card-info [pokemon]="data"></app-card-info>
