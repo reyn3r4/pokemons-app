@@ -20,21 +20,23 @@
                 [ngClass]="['pokemon-img-slides','fade']">
                 <img src="{{pokemon.sprites.front_shiny}}">
             </div>
-        </div>        
+        </div>
         <mat-list class="abilities-list">
-            <mat-list-item ngClass="abilitie-item" *ngFor="let abilitie of pokemon.abilities"><span class="white-text">{{abilitie.name | titlecase}}</span></mat-list-item>
+            <mat-list-item ngClass="abilitie-item" *ngFor="let abilitie of pokemon.abilities"><span
+                    class="white-text">{{abilitie.name | titlecase}}</span></mat-list-item>
         </mat-list>
         <mat-chip-set>
             <mat-chip class="chip-style" *ngFor="let ptype of pokemon.types index as i;"
                 [ngStyle]="{'background-color':typeColor[ptype.name]}" (click)="setStyle(i)">
-                <app-pokeball [ngStyle]="{width:'20px', position: 'fixed'}" [color]="typeColor[ptype.name]" [name]="ptype.name"/>
+                <app-pokeball [ngStyle]="{width:'20px', position: 'absolute'}" [color]="typeColor[ptype.name]"
+                    [name]="ptype.name" />
                 <span class="white-text">..... {{ptype.name| titlecase}}</span>
             </mat-chip>
         </mat-chip-set>
-
         <h2 class="poke-name">{{pokemon.name|uppercase}}</h2>
         <div class="types" i18n>
-            <button (click)="pokemonSetFavorite(pokemon.id)" matTooltip="Mark as favorite" mat-fab extended [ngStyle]="{'background-color':'#00000033'}">
+            <button (click)="pokemonSetFavorite(pokemon.id)" matTooltip="Mark as favorite" mat-fab extended
+                [ngStyle]="{'background-color':'#00000033'}">
                 <mat-icon>{{pokemon.favorite ? 'favorite' : 'favorite_border'}}</mat-icon>
                 Favorite
             </button>
@@ -49,6 +51,5 @@
                 <p i18n>Weight</p>
             </div>
         </div>
-
     </mat-card-content>
 </mat-card>
