@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 import { ListPokemon, Pokemon, Sprites, Type } from '../models/pokemon.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { ACTIONS, setFavoritePokemon } from '../store/actions';
+import { ACTIONS, logOldFavoritePokemon, setFavoritePokemon } from '../store/actions';
 
 @Injectable({
   providedIn: 'root'
@@ -194,6 +194,7 @@ export class PokemonsService {
           this.favoritePokemonAdvice.next(pokemon);
           //this.store.dispatch(setFavoritePokemon({favorite: { ...pokemon }}));
           this.store.dispatch({type:ACTIONS.SET_FAVORITE,favorite: { ...pokemon }});
+          this.store.dispatch(logOldFavoritePokemon({old:{ ...pokemon }}));
         }
       });
     }

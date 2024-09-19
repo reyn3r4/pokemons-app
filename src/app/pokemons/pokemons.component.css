@@ -17,8 +17,6 @@ main {
   }
   .pokemon-list {
     flex: 75%;
-    max-height: 750px;
-    overflow: auto;
   }
   .pokemon-details {
     flex: 25%;

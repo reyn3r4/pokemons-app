@@ -17,10 +17,11 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { GenPokemonsResumePipe } from './pipes/gen-pokemons-resume.pipe';
 import { ImgNotFoundDirective } from './directives/img-not-found.directive';
-import { favoriteReducer, appStateFeature } from './store/reducers';
+import { appStateFeature, appReducer } from './store/reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { FavoriteSelectedEffects } from './store/effects';
 import { PokeballComponent } from "./pokemons/pokeball/pokeball.component";
+import { FavoriteLogsComponent } from './pokemons/favorite-logs/favorite-logs.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { PokeballComponent } from "./pokemons/pokeball/pokeball.component";
     FavoritePokemonBarComponent,
     PokemonResumeComponent,
     GenPokemonsResumePipe,
-    ImgNotFoundDirective
+    ImgNotFoundDirective,
+    FavoriteLogsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,7 @@ import { PokeballComponent } from "./pokemons/pokeball/pokeball.component";
     MaterialModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({}, {}),
-    StoreModule.forFeature(appStateFeature, favoriteReducer),
+    StoreModule.forFeature(appStateFeature, appReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
     EffectsModule.forFeature([FavoriteSelectedEffects]),

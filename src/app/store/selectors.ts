@@ -8,3 +8,7 @@ export const getFavorite = createSelector(
   appState,
   (favorite): Pokemon => favorite.favorite
 );
+export const getFavoriteLogs = createSelector(
+  appState,
+  (logFavorites): Pokemon[] => logFavorites.logFavorites
+);
