@@ -5,6 +5,7 @@ import { ListPokemon, Pokemon, Sprites, Type } from '../models/pokemon.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { ACTIONS, logOldFavoritePokemon, setFavoritePokemon } from '../store/actions';
+import { logFavorite } from '../pokemons/decorators/logFavorite';
 
 @Injectable({
   providedIn: 'root'
@@ -162,6 +163,9 @@ export class PokemonsService {
     }
 
   }
+  /* @logFavorite{
+
+  } */
   loadFavorite(pNameOrId: string | number) {
     let favoriteLoaded = this.getPokemon(pNameOrId);
     if (favoriteLoaded && favoriteLoaded.height) {
