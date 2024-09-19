@@ -6,7 +6,6 @@ import { CardDialogComponent } from '../card-dialog/card-dialog.component';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { getFavorite } from 'src/app/store/selectors';
-import {MatRippleModule} from '@angular/material/core';
 import { initialFavoriteState } from 'src/app/store/reducers';
 
 @Component({
@@ -82,6 +81,10 @@ export class FavoritePokemonBarComponent {
         console.log('The dialog was closed');
       });
     }
+  }
+
+  setColor(color:string){
+    this.barcolor=color;
   }
 }
 

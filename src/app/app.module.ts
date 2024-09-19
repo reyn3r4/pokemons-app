@@ -20,6 +20,7 @@ import { ImgNotFoundDirective } from './directives/img-not-found.directive';
 import { favoriteReducer, appStateFeature } from './store/reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { FavoriteSelectedEffects } from './store/effects';
+import { PokeballComponent } from "./pokemons/pokeball/pokeball.component";
 
 
 @NgModule({
@@ -35,17 +36,18 @@ import { FavoriteSelectedEffects } from './store/effects';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    TitleCasePipe,UpperCasePipe,LowerCasePipe,
+    TitleCasePipe, UpperCasePipe, LowerCasePipe,
     HttpClientModule,
     MaterialModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({}, {}),
-    StoreModule.forFeature(appStateFeature , favoriteReducer),
+    StoreModule.forFeature(appStateFeature, favoriteReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
     EffectsModule.forFeature([FavoriteSelectedEffects]),
-    CardInfoComponent
-  ],
+    CardInfoComponent,
+    PokeballComponent
+],
   providers: [],
   bootstrap: [AppComponent]
 })
