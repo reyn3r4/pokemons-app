@@ -20,16 +20,16 @@ export class GenPokemonsResumePipe implements PipeTransform {
       return prev;
     }, []);*/
     let initials = pokemons.reduce((prev, cur) => {
-        const i = prev.findIndex((element: any) => element.initial === cur.name.charAt(0));
+        const i = prev.findIndex((element: any) => element.initial === cur.name.toLowerCase().charAt(0));
         if (i != -1) 
           prev[i].count++;
         else 
-          prev.push({ initial: cur.name.charAt(0), count: 1 });
+          prev.push({ initial: cur.name.toLowerCase().charAt(0), count: 1 });
       return prev;
     }, []);
     if (sort.direction)
       initials = initials.sort(function (a: any, b: any) {
-        return (a[sort.active] < b[sort.active] ? -1 : 1) * (sort.direction == 'asc' ? 1 : -1);
+        return (a[sort.active] < b[sort.active] ? -1 : 1) * (sort.direction.toLowerCase() == 'asc' ? 1 : -1);
       });
     return initials;
   }
