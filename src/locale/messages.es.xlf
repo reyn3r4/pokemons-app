@@ -73,7 +73,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="8177873832400820695" datatype="html">
-        <source>Count</source>
+        <source>Cantidad</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/pokemon-resume/pokemon-resume.component.html</context>
           <context context-type="linenumber">16</context>

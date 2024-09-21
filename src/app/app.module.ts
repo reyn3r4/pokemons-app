@@ -23,6 +23,7 @@ import { FavoriteSelectedEffects } from './store/effects';
 import { PokeballComponent } from "./pokemons/pokeball/pokeball.component";
 import { FavoriteLogsComponent } from './pokemons/favorite-logs/favorite-logs.component';
 import { NoSpecialCharactersDirective } from './directives/no-special-characters.directive';
+import { ImgSliderDirective } from './directives/img-slider.directive';
 
 
 @NgModule({
@@ -33,7 +34,6 @@ import { NoSpecialCharactersDirective } from './directives/no-special-characters
     FavoritePokemonBarComponent,
     PokemonResumeComponent,
     GenPokemonsResumePipe,
-    ImgNotFoundDirective,
     FavoriteLogsComponent,
     NoSpecialCharactersDirective
   ],
@@ -49,8 +49,9 @@ import { NoSpecialCharactersDirective } from './directives/no-special-characters
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([]),
     EffectsModule.forFeature([FavoriteSelectedEffects]),
-    CardInfoComponent,
-    PokeballComponent
+    CardInfoComponent,ImgNotFoundDirective,
+    PokeballComponent,
+    ImgSliderDirective
 ],
   providers: [],
   bootstrap: [AppComponent]

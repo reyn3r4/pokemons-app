@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from 'src/app/material/material.module';
 import { Pokemon, TypeColors } from 'src/app/models/pokemon.model';
 import { PokeballComponent } from '../pokeball/pokeball.component';
+import { ImgSliderDirective } from '../../directives/img-slider.directive';
 
 @Component({
   selector: 'app-card-info',
   templateUrl: './card-info.component.html',
   styleUrls: ['./card-info.component.css'],
   standalone: true,
-  imports: [CommonModule, MaterialModule, PokeballComponent]
+  imports: [CommonModule, MaterialModule, PokeballComponent, ImgSliderDirective]
 })
 export class CardInfoComponent {
   @Input() pokemon!: Pokemon;
@@ -52,16 +53,13 @@ export class CardInfoComponent {
   }
 
   ngAfterViewInit() {
-    let slideIndex = 0;
-    let slides = this.slidescontainer.nativeElement.children as HTMLCollectionOf<HTMLElement>;
-    //let slides = document.getElementsByClassName("pokemon-img-slides") as HTMLCollectionOf<HTMLElement>;
-    function showSlides() {
-      for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
-      if (slideIndex >= slides.length) slideIndex = 0;
-      slides[slideIndex++].style.display = "block";
-      setTimeout(showSlides, 2000);
-    }
-    showSlides();
+    this.showSlides(this.slidescontainer.nativeElement.children as HTMLCollectionOf<HTMLElement>, 0);
+  }
+
+  private showSlides(slides: HTMLCollectionOf<HTMLElement>, slideIndex: number) {
+    for (let i = 0; i < slides.length; i++) slides[i].style.display = slideIndex == i ? "block" : "none";
+    slideIndex = slideIndex < slides.length-1 ? slideIndex + 1 : 0;
+    setTimeout(() => this.showSlides(slides, slideIndex), 2000);
   }
 
 
@@ -71,6 +69,19 @@ export class CardInfoComponent {
     return {
       'background': `radial-gradient(circle at 4% 17%, ${this.typeColor[name]} 52%, #ffffff 79%)`
     };
+  }
+
+  getDirs(): string[] {
+    let imgs = [];
+    if (this.pokemon.sprites.front_default && this.pokemon.sprites.front_default != '')
+      imgs.push(this.pokemon.sprites.front_default);
+    if (this.pokemon.sprites.back_default && this.pokemon.sprites.back_default != '')
+      imgs.push(this.pokemon.sprites.back_default);
+    if (this.pokemon.sprites.back_shiny && this.pokemon.sprites.back_shiny != '')
+      imgs.push(this.pokemon.sprites.back_shiny);
+    if (this.pokemon.sprites.front_shiny && this.pokemon.sprites.front_shiny != '')
+      imgs.push(this.pokemon.sprites.front_shiny);
+    return imgs;
   }
 
   setStyle(index: number) {

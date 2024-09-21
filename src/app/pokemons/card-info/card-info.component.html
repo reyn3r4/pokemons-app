@@ -5,22 +5,12 @@
             {{pokemon.base_experience}}
         </p>
         <div #slidescontainer class="slideshow-container">
-            <div class="pokemon-img-slides fade">
-                <img src="{{pokemon.sprites.front_default}}">
-            </div>
-            <div [ngStyle]="{display: 'none'}" none *ngIf="pokemon.sprites.back_default"
-                [ngClass]="['pokemon-img-slides','fade']">
-                <img src="{{pokemon.sprites.back_default}}">
-            </div>
-            <div [ngStyle]="{display: 'none'}" *ngIf="pokemon.sprites.back_shiny"
-                [ngClass]="['pokemon-img-slides','fade']">
-                <img src="{{pokemon.sprites.back_shiny}}">
-            </div>
-            <div [ngStyle]="{display: 'none'}" *ngIf="pokemon.sprites.front_shiny"
-                [ngClass]="['pokemon-img-slides','fade']">
-                <img src="{{pokemon.sprites.front_shiny}}">
+            <div *ngFor="let img of getDirs() index as i;" [ngStyle]="{display: i != 0 ? 'none' : 'block'}" none [ngClass]="['pokemon-img-slides','fade']">
+                <img src="{{img}}" appImgNotFound/>
             </div>
         </div>
+       <!-- <div *ImgSlider="getDirs()"></div> -->
+
         <mat-list class="abilities-list">
             <mat-list-item ngClass="abilitie-item" *ngFor="let abilitie of pokemon.abilities"><span
                     class="white-text">{{abilitie.name | titlecase}}</span></mat-list-item>
