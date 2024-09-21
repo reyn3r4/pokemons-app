@@ -34,8 +34,9 @@
             </mat-chip>
         </mat-chip-set>
         <h2 class="poke-name">{{pokemon.name|uppercase}}</h2>
-        <div class="types" i18n>
-            <button (click)="pokemonSetFavorite(pokemon.id)" matTooltip="Mark as favorite" mat-fab extended
+        <div class="types">
+            <button i18n (click)="pokemonSetFavorite(pokemon.id)"
+                [matTooltip]="pokemon.favorite ?'Favorite':'Mark as favorite'" mat-fab extended
                 [ngStyle]="{cursor: pokemon.favorite ? 'not-allowed' : 'pointer', 'background-color':'#00000033'}">
                 <mat-icon>{{pokemon.favorite ? 'favorite' : 'favorite_border'}}</mat-icon>
                 Favorite

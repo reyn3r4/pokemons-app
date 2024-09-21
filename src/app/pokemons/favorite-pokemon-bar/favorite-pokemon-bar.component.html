@@ -16,7 +16,7 @@
       </div>
       <div [ngStyle]="{width:'100%', height:'30%', 'background-color':'lightgray'}"></div>
       <div class="fav-text">
-        <h4 *ngIf="favorite.id" [ngStyle]="{color:barcolor}" i18n>{{favorite.name|titlecase}} is my favorite</h4>
+        <h4 *ngIf="favorite.id" [ngStyle]="{color:barcolor}" i18n>My favorite is {{favorite.name|titlecase}}</h4>
       </div>      
       <img class="dream-world"
         src="{{favorite.sprites.dream_world_front ? favorite.sprites.dream_world_front : '../../../assets/images/poke.svg'}}"

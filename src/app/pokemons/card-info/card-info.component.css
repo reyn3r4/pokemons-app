@@ -97,8 +97,6 @@ mat-list.abilities-list mat-list-item.abilitie-item {
   animation-duration: 1.5s;
 }
 
-.not-allowed   { cursor: not-allowed; }
-
 @keyframes fade {
   from {
     opacity: .4

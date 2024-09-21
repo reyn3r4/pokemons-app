@@ -4,19 +4,16 @@
         <div class="mat-elevation-z8">
             <mat-form-field>
                 <mat-label i18n>Filter</mat-label>
-                <input matInput
-                        (keyup)="onKeyUp($event)"
-                        placeholder="Ej. pika"
-                        [formControl]="myControl"
-                        [matAutocomplete]="auto">
-                        <button mat-icon-button matSuffix (click)="clearFilter($event)" [attr.aria-label]="'Clear'" >
-                            <mat-icon>clear</mat-icon>
-                          </button>
+                <input matInput (keyup)="onKeyUp($event)" placeholder="Ej. pika" [formControl]="myControl"
+                    [matAutocomplete]="auto">
+                <button mat-icon-button matSuffix (click)="clearFilter($event)" [attr.aria-label]="'Clear'">
+                    <mat-icon>clear</mat-icon>
+                </button>
                 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
                     <!--  @for (option of filteredOptions | async; track option) {} -->
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option"
                         (click)="applyFilter(option)">{{option}}</mat-option>
-                    
+
                 </mat-autocomplete>
             </mat-form-field>
             <div class="table-container">
@@ -28,12 +25,15 @@
                     <ng-container matColumnDef="icon">
                         <th mat-header-cell *matHeaderCellDef><mat-icon aria-hidden="false" fontIcon="image"
                                 [ngStyle]="{color: 'rgb(112, 2, 2)'}"></mat-icon></th>
-                        <td mat-cell *matCellDef="let row"><img src={{row.icon}} appImgNotFound [ngStyle]="{width: '50px'}" /></td>
+                        <td mat-cell *matCellDef="let row"><img src={{row.icon}} appImgNotFound
+                                [ngStyle]="{width: '50px'}" /></td>
                     </ng-container>
                     <ng-container matColumnDef="favorite">
                         <th mat-header-cell *matHeaderCellDef aria-label="row actions" i18n>Favorite</th>
                         <td mat-cell *matCellDef="let row">
-                            <button mat-icon-button [ngStyle]="{cursor: row.favorite ? 'not-allowed':'pointer'}" class="btn-favorite" color="accent" matTooltip="Mark as favorite"
+                            <button i18n mat-icon-button [ngStyle]="{cursor: row.favorite ? 'not-allowed':'pointer'}"
+                                class="btn-favorite" color="accent"
+                                [matTooltip]="row.favorite?'Favorite':'Mark as favorite'"
                                 (click)="pokemonSetFavorite(row);$event.stopPropagation()">
                                 <mat-icon *ngIf="row.favorite">favorite</mat-icon>
                                 <mat-icon *ngIf="!row.favorite">favorite_border</mat-icon>
