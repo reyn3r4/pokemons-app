@@ -5,7 +5,7 @@ import { ListPokemon, Pokemon, Sprites, Type } from '../models/pokemon.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { ACTIONS, logAction, setFavoritePokemon } from '../store/actions';
-import { logFavorite } from '../pokemons/decorators/logFavorite';
+import { logActionDecorator } from '../pokemons/decorators/logAction.decorator';
 
 @Injectable({
   providedIn: 'root'
@@ -131,6 +131,9 @@ export class PokemonsService {
   get favorite(){
     return this.favoritePokemonAdvice.asObservable();
   }
+  getStore(){
+    return this.store;
+  }
   loadPokemon(pNameOrId: string | number) {
     let pokemonLoaded = this.getPokemon(pNameOrId);
     if (pokemonLoaded && pokemonLoaded.height) {
@@ -163,9 +166,9 @@ export class PokemonsService {
     }
 
   }
-  /* @logFavorite{
-
-  } */
+  @logActionDecorator({
+      log:true
+  })
   loadFavorite(pNameOrId: string | number) {
     let favoriteLoaded = this.getPokemon(pNameOrId);
     if (favoriteLoaded && favoriteLoaded.height) {
@@ -198,7 +201,7 @@ export class PokemonsService {
           this.favoritePokemonAdvice.next(pokemon);
           //this.store.dispatch(setFavoritePokemon({favorite: { ...pokemon }}));
           this.store.dispatch({type:ACTIONS.SET_FAVORITE,favorite: { ...pokemon }});
-          this.store.dispatch(logAction({log:{ text:'Set favorite', action:ACTIONS.SET_FAVORITE }}));
+          //this.store.dispatch(logAction({log:{ text:'Set favorite', action:ACTIONS.SET_FAVORITE }}));
         }
       });
     }

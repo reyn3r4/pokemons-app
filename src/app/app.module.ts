@@ -22,6 +22,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { FavoriteSelectedEffects } from './store/effects';
 import { PokeballComponent } from "./pokemons/pokeball/pokeball.component";
 import { FavoriteLogsComponent } from './pokemons/favorite-logs/favorite-logs.component';
+import { NoSpecialCharactersDirective } from './directives/no-special-characters.directive';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { FavoriteLogsComponent } from './pokemons/favorite-logs/favorite-logs.co
     PokemonResumeComponent,
     GenPokemonsResumePipe,
     ImgNotFoundDirective,
-    FavoriteLogsComponent
+    FavoriteLogsComponent,
+    NoSpecialCharactersDirective
   ],
   imports: [
     BrowserModule,
