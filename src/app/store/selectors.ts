@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { appStateFeature, appState } from "./reducers";
-import { Pokemon } from "../models/pokemon.model";
+import { Log, Pokemon } from "../models/pokemon.model";
 
 const appState = createFeatureSelector<appState>(appStateFeature);
 
@@ -8,7 +8,7 @@ export const getFavorite = createSelector(
   appState,
   (favorite): Pokemon => favorite.favorite
 );
-export const getFavoriteLogs = createSelector(
+export const getLogAction = createSelector(
   appState,
-  (logFavorites): Pokemon[] => logFavorites.logFavorites
+  (logAction): Log[] => logAction.logActions
 );

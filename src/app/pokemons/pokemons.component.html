@@ -14,7 +14,12 @@
         <app-card-info [pokemon]="selected" (setFavorite)="changeFavorite($event)"></app-card-info>
       </div>    
     </div>
-    <div class="margin-card">
-      <app-pokemon-resume></app-pokemon-resume>
+    <div class="container-resume">
+      <div class="margin-card flex-child resume">
+        <app-pokemon-resume></app-pokemon-resume>
+      </div>   
+      <div class="margin-card flex-child log">        
+        <app-favorite-logs class="logs"></app-favorite-logs>
+      </div> 
     </div>
   </main>

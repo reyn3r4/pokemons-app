@@ -48,3 +48,8 @@ export interface Pokemon extends ListPokemon {
     sprites: Sprites;
     abilities: Abilitie[]
 }
+
+export interface Log{
+    text:string,
+    action:string
+}

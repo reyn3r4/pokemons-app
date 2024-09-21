@@ -26,3 +26,13 @@ main {
       flex-direction: column-reverse;
     }
   }
+
+  div.container-resume{
+    display:flex;
+    flex-wrap: wrap;
+  }
+
+  div.margin-card.flex-child{
+    flex-grow: 1;
+    flex-basis: auto;
+  }

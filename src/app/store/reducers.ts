@@ -1,12 +1,12 @@
 import { on } from "@ngrx/store";
 import { createReducer } from "@ngrx/store";
-import { Pokemon } from "../models/pokemon.model";
-import { logOldFavoritePokemon, setFavoritePokemon } from "./actions";
+import { Log, Pokemon } from "../models/pokemon.model";
+import { logAction, setFavoritePokemon } from "./actions";
 
 export const appStateFeature = "appPokemonState";
 export interface appState {
     favorite: Pokemon,
-    logFavorites:Pokemon[]
+    logActions:Log[]
 }
 const initialState:appState={
         favorite: {
@@ -30,7 +30,7 @@ const initialState:appState={
             },
             abilities: Array()
         },
-        logFavorites:[]
+        logActions:Array()
 
 }
 
@@ -39,9 +39,9 @@ export const appReducer = createReducer(
     on(setFavoritePokemon, function (currentState, action) {
         return {...currentState, favorite: action.favorite };
     }),
-    on(logOldFavoritePokemon, function (currentState, action) {
-        console.log('log favorite');
-        return {...currentState, logFavorites: [action.old].concat(currentState.logFavorites)};;
+    on(logAction, function (currentState, action) {
+        console.log(action.log);
+        return {...currentState, logActions: [action.log].concat(currentState.logActions)};;
     })
 
 );

@@ -1,1 +1,17 @@
-<p>favorite-logs works!</p>
+<mat-card appearance="outlined">
+    <mat-card-content>
+        <mat-toolbar>
+            <mat-toolbar-row>
+                <span i18n>Actions logs</span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <div class="logs-container mat-elevation-z8">
+            <mat-list class="logs-list">
+                <mat-list-item *ngFor="let log of actionsLogs">
+                  <span matListItemTitle>{{log.text}}</span>
+                  <span matListItemLine>{{log.action}}</span>
+                </mat-list-item>
+              </mat-list>
+        </div>
+    </mat-card-content>
+</mat-card>

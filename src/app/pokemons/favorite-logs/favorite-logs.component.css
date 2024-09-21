@@ -1,0 +1,4 @@
+mat-list.logs-list {
+    max-height: 410px;
+    overflow: auto;
+}

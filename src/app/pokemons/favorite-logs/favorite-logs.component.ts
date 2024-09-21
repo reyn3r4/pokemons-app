@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
-import { Pokemon } from 'src/app/models/pokemon.model';
-import { getFavoriteLogs } from 'src/app/store/selectors';
+import { Log, Pokemon } from 'src/app/models/pokemon.model';
+import { getLogAction } from 'src/app/store/selectors';
 
 @Component({
   selector: 'app-favorite-logs',
@@ -9,15 +10,15 @@ import { getFavoriteLogs } from 'src/app/store/selectors';
   styleUrls: ['./favorite-logs.component.css']
 })
 export class FavoriteLogsComponent {
-  favoriteLogs:Pokemon[];
+  actionsLogs:Log[];
   constructor(private store:Store){
-    this.favoriteLogs= [];
+    this.actionsLogs= [];
   }
 
   ngOnInit(): void {    
-    this.store.select(getFavoriteLogs).subscribe((pFavLog:Pokemon[])=>{
-      this.favoriteLogs=pFavLog;
-      console.log(this.favoriteLogs);
+    this.store.select(getLogAction).subscribe((logs)=>{
+      this.actionsLogs=logs;
+      console.log(this.actionsLogs);
     });
   }
 }
