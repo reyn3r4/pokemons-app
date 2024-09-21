@@ -28,15 +28,15 @@
         <mat-chip-set>
             <mat-chip class="chip-style" *ngFor="let ptype of pokemon.types index as i;"
                 [ngStyle]="{'background-color':typeColor[ptype.name]}" (click)="setStyle(i)">
-                <app-pokeball [ngStyle]="{width:'20px', position: 'absolute'}" [color]="typeColor[ptype.name]"
-                    [name]="ptype.name" />
+                <app-pokeball [ngStyle]="{width:'20px', position: 'absolute',cursor:'pointer'}"
+                    [color]="typeColor[ptype.name]" [name]="ptype.name" />
                 <span class="white-text">..... {{ptype.name| titlecase}}</span>
             </mat-chip>
         </mat-chip-set>
         <h2 class="poke-name">{{pokemon.name|uppercase}}</h2>
         <div class="types" i18n>
             <button (click)="pokemonSetFavorite(pokemon.id)" matTooltip="Mark as favorite" mat-fab extended
-                [ngStyle]="{'background-color':'#00000033'}">
+                [ngStyle]="{cursor: pokemon.favorite ? 'not-allowed' : 'pointer', 'background-color':'#00000033'}">
                 <mat-icon>{{pokemon.favorite ? 'favorite' : 'favorite_border'}}</mat-icon>
                 Favorite
             </button>

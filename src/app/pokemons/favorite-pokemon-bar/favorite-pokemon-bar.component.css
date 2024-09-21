@@ -66,3 +66,26 @@ div.types-container{
   align-items: center;
   justify-content: center;
 }
+
+div.fav-text{
+  position:absolute;
+  top:90px;
+  left:140px;
+  z-index: 101;
+  background:transparent;
+  backdrop-filter:blur(10px);
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+}
+div.fav-text h4{ 
+  margin: 5px; 
+  cursor: pointer; 
+  text-shadow: whitesmoke 2px 0px,
+               whitesmoke -2px 0px,
+               whitesmoke 0px 2px,
+               rgb(255, 255, 255) 0px -2px,
+               rgb(255, 255, 255) 1px 1px,
+               rgb(255, 255, 255) -1px -1px,
+               rgb(255, 255, 255) 1px -1px,
+               rgb(255, 255, 255) -1px 1px;
+}

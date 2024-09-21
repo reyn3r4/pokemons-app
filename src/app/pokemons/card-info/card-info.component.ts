@@ -41,10 +41,10 @@ export class CardInfoComponent {
     };
     this.typeColor = TypeColors;
     this.backStyle = 0;
-  }  
+  }
 
   pokemonSetFavorite(id: number) {
-    this.setFavorite.emit(id);
+    if (!this.pokemon.favorite) this.setFavorite.emit(id);
   }
 
   ngOnInit(): void {
@@ -66,14 +66,14 @@ export class CardInfoComponent {
 
 
   getStyle() {
-    if(this.pokemon.types.length<=this.backStyle) this.backStyle=0;
+    if (this.pokemon.types.length <= this.backStyle) this.backStyle = 0;
     let name = this.pokemon && this.pokemon.types && this.pokemon.types[this.backStyle] && this.pokemon.types[this.backStyle].name ? this.pokemon.types[this.backStyle].name : 'bug';
     return {
       'background': `radial-gradient(circle at 4% 17%, ${this.typeColor[name]} 52%, #ffffff 79%)`
     };
   }
-  
+
   setStyle(index: number) {
-    this.backStyle= index;
+    this.backStyle = index;
   }
 }

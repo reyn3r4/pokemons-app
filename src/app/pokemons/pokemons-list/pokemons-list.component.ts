@@ -25,7 +25,7 @@ export class PokemonsListComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @Output() setSelected = new EventEmitter<number>;
   @Output() setFavorite = new EventEmitter<number>;
-  constructor(private pokemonService: PokemonsService, private store:Store) {
+  constructor(private pokemonService: PokemonsService, private store: Store) {
     this.displayedColumns = ['id', 'icon', 'favorite', 'name'];
     this.pokemonsList = [];
     this.selected = 0;
@@ -33,27 +33,27 @@ export class PokemonsListComponent {
     this.dataSource = new MatTableDataSource<ListPokemon>(this.pokemonsList);
   }
   ngOnInit(): void {
-    this.dataSource=new MatTableDataSource<ListPokemon>(this.pokemonsList);
-    this.pokemonService.pokemons.subscribe((pPokemonsList:ListPokemon[]) => {
-      this.pokemonsList=pPokemonsList;
+    this.dataSource = new MatTableDataSource<ListPokemon>(this.pokemonsList);
+    this.pokemonService.pokemons.subscribe((pPokemonsList: ListPokemon[]) => {
+      this.pokemonsList = pPokemonsList;
       this.dataSource.data = this.pokemonsList;
     });
-    this.pokemonService.favorite.subscribe((pFav:Pokemon)=>{
-      this.pokemonsList=this.pokemonService.getPokemonsList();
+    this.pokemonService.favorite.subscribe((pFav: Pokemon) => {
+      this.pokemonsList = this.pokemonService.getPokemonsList();
       this.dataSource.data = this.pokemonsList;
     });
-    this.store.select(getFavorite).subscribe((pFav:Pokemon)=>{
-      this.pokemonsList=this.pokemonService.getPokemonsList();
+    this.store.select(getFavorite).subscribe((pFav: Pokemon) => {
+      this.pokemonsList = this.pokemonService.getPokemonsList();
       this.dataSource.data = this.pokemonsList;
     });
 
     this.filteredOptions = this.myControl.valueChanges.pipe(
       /*debounceTime(500),*/
       //startWith(''),
-      map(value => this.formFilter(value|| '')),
+      map(value => this.formFilter(value || '')),
     );
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.pokemonService.selectPokemonAdvice.unsubscribe();
   }
   ngAfterViewInit() {
@@ -61,8 +61,8 @@ export class PokemonsListComponent {
     this.pokemonService.loadAllPokemons();
   }
 
-  formFilter(val:string):string[]{
-    return this.pokemonsList.map(el=>{
+  formFilter(val: string): string[] {
+    return this.pokemonsList.map(el => {
       return el.name.toLowerCase();
     }).filter(option => option.toLowerCase().includes(val.toLowerCase()));
   }
@@ -72,7 +72,7 @@ export class PokemonsListComponent {
     this.applyFilter(filterValue);
   }
 
-  clearFilter(event: Event){
+  clearFilter(event: Event) {
     this.myControl.reset();
     this.applyFilter('');
   }
@@ -87,7 +87,9 @@ export class PokemonsListComponent {
     }
   }
   pokemonSetFavorite(row: any) {
-    this.favorite = row.id;
-    this.setFavorite.emit(this.favorite);
+    if (!row.favorite) {
+      this.favorite = row.id;
+      this.setFavorite.emit(this.favorite);
+    }
   }
 }
