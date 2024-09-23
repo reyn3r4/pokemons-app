@@ -6,8 +6,9 @@
   border-radius: 5px;
 }
 
-.pokemon-img-slides img {
+.pokemon-img-slides> img {
   width: 100%;
+  filter: drop-shadow(10px 7px 10px whitesmoke);
 }
 
 .hp {
