@@ -21,7 +21,8 @@
       <div *ngIf="favorite.id" class="fav-text">
         <h4 [ngStyle]="{color:barcolor}" i18n>My favorite is {{favorite.name|titlecase}}</h4>
       </div>
-      <img class="dream-world"
+      <!-- [ngStyle]="{filter: 'drop-shadow(10px 7px 10px '+barcolor+')'}" -->
+      <img class="dream-world" 
         src="{{favorite.sprites.dream_world_front ? favorite.sprites.dream_world_front : '../../../assets/images/poke.svg'}}"
         appImgNotFound />
       <div [ngStyle]="{display:favorite.sprites.showdown_front?'inherit':'none'}" class="slideshow-container">

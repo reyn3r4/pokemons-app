@@ -43,6 +43,7 @@ img.dream-world {
   z-index: 100;
   top: 5px;
   left: 20px;
+  filter: drop-shadow(10px 7px 10px black);
 }
 
 div.ripple-container{
