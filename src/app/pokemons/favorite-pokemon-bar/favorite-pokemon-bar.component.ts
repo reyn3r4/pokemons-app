@@ -3,7 +3,7 @@ import { Pokemon, TypeColors } from 'src/app/models/pokemon.model';
 import { PokemonsService } from 'src/app/services/pokemons-service.service';
 import {  MatDialog } from '@angular/material/dialog';
 import { CardDialogComponent } from '../card-dialog/card-dialog.component';
-import { Observable } from 'rxjs';
+import { Observable, debounceTime, map } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { getFavorite } from 'src/app/store/selectors';
 
@@ -18,6 +18,7 @@ export class FavoritePokemonBarComponent {
   slideIndex: number;
   typeColor: { [key: string]: string };
   barcolor: string;
+  percentloaded;
   constructor(private pokemonService: PokemonsService, public dialog: MatDialog,
     private store: Store) {
     this.favorite = {
@@ -44,8 +45,9 @@ export class FavoritePokemonBarComponent {
     this.slideIndex = 0;
     this.typeColor = TypeColors;
     this.barcolor = 'red';
+    this.percentloaded=0;
   }
-
+  
   ngOnInit(): void {
     /*this.pokemonService.favorite.subscribe((pFavorite) => {
       console.log(pFavorite);
@@ -56,6 +58,13 @@ export class FavoritePokemonBarComponent {
       //console.log(pokemon);
       this.favorite=pokemon;
       this.barcolor = this.favorite && this.favorite.types && this.favorite.types[0] && this.favorite.types[0].name ? this.typeColor[this.favorite.types[0].name] : '#b12424';
+    });
+  /*   this.pokemonService.loadedPercent.pipe(
+      debounceTime(500),
+      map(loaded => this.percentloaded=loaded.loaded*100/loaded.total)
+    ); */
+    this.pokemonService.loadedPercent.subscribe((loaded:{total:number,loaded:number}) => {
+      this.percentloaded=loaded.loaded*100/loaded.total;
     });
   }
 

@@ -13,6 +13,11 @@ import { logActionDecorator } from '../pokemons/decorators/logAction.decorator';
 export class PokemonsService {
   private aServiceURL: string;
   private aListPokemons: ListPokemon[] = [];
+  private data:{total:number,loaded:number}={
+    total:0,
+    loaded:0
+  };
+  private loadPercentAdvice: BehaviorSubject<{total:number,loaded:number}>;
   private defaultP: Pokemon;
   private loadPokemonsAdvice: BehaviorSubject<ListPokemon[]>;
   private loadAllPokemonsAdvice: BehaviorSubject<ListPokemon[]>;  
@@ -41,6 +46,7 @@ export class PokemonsService {
       },
       abilities: []
     };
+    this.loadPercentAdvice=new BehaviorSubject<{total:number,loaded:number}>(this.data);
     this.loadPokemonsAdvice=new BehaviorSubject<ListPokemon[]>([]);
     this.loadAllPokemonsAdvice=new BehaviorSubject<ListPokemon[]>([]);
     this.selectPokemonAdvice = new BehaviorSubject<Pokemon>(this.defaultP);
@@ -59,6 +65,11 @@ export class PokemonsService {
     var that = this;
     this.http.get(url ? url : this.aServiceURL).subscribe((data) => {
       const response = JSON.parse(JSON.stringify(data));
+      this.data={
+        total:response.count,
+        loaded:this.data.loaded+response.results.length
+      };
+      this.loadPercentAdvice.next(this.data);
       response.results.forEach(function (rPok: any) {
         if (rPok.name) {
           let id = that.getIdFromURL(rPok.url);
@@ -130,6 +141,9 @@ export class PokemonsService {
   }
   get favorite(){
     return this.favoritePokemonAdvice.asObservable();
+  }
+  get loadedPercent(){
+    return this.loadPercentAdvice.asObservable();
   }
   getStore(){
     return this.store;
