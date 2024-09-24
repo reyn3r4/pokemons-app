@@ -57,7 +57,7 @@ div.circle {
 }
 
 div.circle div {
-  background-color: grey;
+  background-color: lightgray;
   border-radius: 50%;
   height: 18px;
   width: 18px;
