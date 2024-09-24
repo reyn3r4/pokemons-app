@@ -5,7 +5,7 @@
       <div [ngStyle]="{width:'100%', height:'70%', 'background-color':barcolor}">
       </div>
       <!-- <hr [ngStyle]="{width:'100%', height:'5px', border: '0px', margin:'0px'}" color="black"> -->
-      <hr [ngStyle]="{width:percentloaded+'%', height:'5px', border: '0px', margin:'0px'}" color="black">
+      <hr [style.width.%]="percentloaded" [ngStyle]="{height:'5px', border: '0px', margin:'0px'}" color="black">
       <!-- <div class="circle" [ngStyle]="{'background-color': barcolor, left:'75%'}"> -->
       <div class="circle" [ngStyle]="{
                                       border: '5px solid '+(percentloaded < 75 ? 'grey':'black'),
