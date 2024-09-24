@@ -1,8 +1,8 @@
 div.slideshow-container {
   background-color: transparent;
   position: absolute;
-  top:5px;
-  right:5%;
+  top: 5px;
+  right: 5%;
 }
 
 .favorite-slides {
@@ -32,7 +32,7 @@ div.slideshow-container {
 
 .favorite-card {
   display: inline-flex !important;
-  padding:0px !important;
+  padding: 0px !important;
 }
 
 img.dream-world {
@@ -46,7 +46,6 @@ img.dream-world {
 }
 
 div.circle {
-  border: 5px solid black;
   height: 30px;
   border-radius: 50%;
   width: 30px;
@@ -57,7 +56,15 @@ div.circle {
   justify-content: center;
 }
 
-div.types-container{
+div.circle div {
+  background-color: grey;
+  border-radius: 50%;
+  height: 18px;
+  width: 18px;
+}
+
+
+div.types-container {
   position: absolute;
   bottom: 2px;
   left: 80%;
@@ -66,25 +73,26 @@ div.types-container{
   justify-content: center;
 }
 
-div.fav-text{
-  position:absolute;
-  top:90px;
-  left:140px;
+div.fav-text {
+  position: absolute;
+  top: 90px;
+  left: 140px;
   z-index: 101;
-  background:transparent;
-  backdrop-filter:blur(10px);
+  background: transparent;
+  backdrop-filter: blur(10px);
   border: 1px solid whitesmoke;
   border-radius: 5px;
 }
-div.fav-text h4{ 
-  margin: 5px; 
-  cursor: pointer; 
+
+div.fav-text h4 {
+  margin: 5px;
+  cursor: pointer;
   text-shadow: whitesmoke 2px 0px,
-               whitesmoke -2px 0px,
-               whitesmoke 0px 2px,
-               rgb(255, 255, 255) 0px -2px,
-               rgb(255, 255, 255) 1px 1px,
-               rgb(255, 255, 255) -1px -1px,
-               rgb(255, 255, 255) 1px -1px,
-               rgb(255, 255, 255) -1px 1px;
+    whitesmoke -2px 0px,
+    whitesmoke 0px 2px,
+    rgb(255, 255, 255) 0px -2px,
+    rgb(255, 255, 255) 1px 1px,
+    rgb(255, 255, 255) -1px -1px,
+    rgb(255, 255, 255) 1px -1px,
+    rgb(255, 255, 255) -1px 1px;
 }
