@@ -40,7 +40,6 @@ export const appReducer = createReducer(
         return {...currentState, favorite: action.favorite };
     }),
     on(logAction, function (currentState, action) {
-        console.log(action.log);
         return {...currentState, logActions: [action.log].concat(currentState.logActions)};;
     })
 

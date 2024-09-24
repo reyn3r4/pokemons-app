@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
-import { Log, Pokemon } from 'src/app/models/pokemon.model';
+import { Log } from 'src/app/models/pokemon.model';
 import { getLogAction } from 'src/app/store/selectors';
 
 @Component({
@@ -18,7 +17,6 @@ export class FavoriteLogsComponent {
   ngOnInit(): void {    
     this.store.select(getLogAction).subscribe((logs)=>{
       this.actionsLogs=logs;
-      console.log(this.actionsLogs);
     });
   }
 }

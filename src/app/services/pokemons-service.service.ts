@@ -13,17 +13,13 @@ import { logActionDecorator } from '../pokemons/decorators/logAction.decorator';
 export class PokemonsService {
   private aServiceURL: string;
   private aListPokemons: ListPokemon[] = [];
-  private data:{total:number,loaded:number}={
-    total:0,
-    loaded:0
-  };
-  private loadPercentAdvice: BehaviorSubject<{total:number,loaded:number}>;
+  private loadPercentAdvice: BehaviorSubject<{ total: number, loaded: number }>;
   private defaultP: Pokemon;
   private loadPokemonsAdvice: BehaviorSubject<ListPokemon[]>;
-  private loadAllPokemonsAdvice: BehaviorSubject<ListPokemon[]>;  
+  private loadAllPokemonsAdvice: BehaviorSubject<ListPokemon[]>;
   public selectPokemonAdvice: BehaviorSubject<Pokemon>;
   public favoritePokemonAdvice: BehaviorSubject<Pokemon>;
-  constructor(private http: HttpClient, private store:Store) {
+  constructor(private http: HttpClient, private store: Store) {
     this.aServiceURL = environment.pokemonsApiUrl;
     this.defaultP = {
       id: 0,
@@ -40,15 +36,18 @@ export class PokemonsService {
         back_shiny: '',
         front_default: '',
         front_shiny: '',
-        showdown_front:'',
-        showdown_back:'',
-        dream_world_front:''
+        showdown_front: '',
+        showdown_back: '',
+        dream_world_front: ''
       },
       abilities: []
     };
-    this.loadPercentAdvice=new BehaviorSubject<{total:number,loaded:number}>(this.data);
-    this.loadPokemonsAdvice=new BehaviorSubject<ListPokemon[]>([]);
-    this.loadAllPokemonsAdvice=new BehaviorSubject<ListPokemon[]>([]);
+    this.loadPercentAdvice = new BehaviorSubject<{ total: number, loaded: number }>({
+      total: 0,
+      loaded: 0
+    });
+    this.loadPokemonsAdvice = new BehaviorSubject<ListPokemon[]>([]);
+    this.loadAllPokemonsAdvice = new BehaviorSubject<ListPokemon[]>([]);
     this.selectPokemonAdvice = new BehaviorSubject<Pokemon>(this.defaultP);
     this.favoritePokemonAdvice = new BehaviorSubject<Pokemon>(this.defaultP);
   }
@@ -61,15 +60,10 @@ export class PokemonsService {
   private getIcon(id: number) {
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id.toString()}.png`;
   }
-  private loadPokemonsPaginated(url?: string) {
+  private lazyLoadPokemonsPaginated(url?: string) {
     var that = this;
     this.http.get(url ? url : this.aServiceURL).subscribe((data) => {
       const response = JSON.parse(JSON.stringify(data));
-      this.data={
-        total:response.count,
-        loaded:this.data.loaded+response.results.length
-      };
-      this.loadPercentAdvice.next(this.data);
       response.results.forEach(function (rPok: any) {
         if (rPok.name) {
           let id = that.getIdFromURL(rPok.url);
@@ -83,19 +77,20 @@ export class PokemonsService {
         }
       });
       this.loadPokemonsAdvice.next(this.aListPokemons);
-      if (response.next) this.loadPokemonsPaginated(response.next);
+      this.loadPercentAdvice.next({
+        total: response.count,
+        loaded: this.aListPokemons.length
+      });
+      if (response.next) this.lazyLoadPokemonsPaginated(response.next);
       else this.loadAllPokemonsAdvice.next(this.aListPokemons);
     });
   }
   private addPokemon(pPokemon: ListPokemon) {
     this.aListPokemons.push(pPokemon);
   }
-  private addPokemons(pPokemons: ListPokemon[]) {
-    return this.aListPokemons.concat(pPokemons);
-  }
   private updatePokemonData(pNameOrId: string | number, data: Pokemon) {
     var i = this.aListPokemons.findIndex(p => p.name == pNameOrId || p.id == pNameOrId);
-    if (Boolean(i>=0)) this.aListPokemons[i] = data;
+    if (Boolean(i >= 0)) this.aListPokemons[i] = data;
   }
   private getPokemonResponseSprites(pPok: any): Sprites {
     return {
@@ -103,9 +98,9 @@ export class PokemonsService {
       back_shiny: pPok.sprites.back_shiny,
       front_default: pPok.sprites.front_default,
       front_shiny: pPok.sprites.front_shiny,
-      showdown_front:pPok.sprites.other && pPok.sprites.other.showdown && pPok.sprites.other.showdown.front_default?pPok.sprites.other.showdown.front_default:pPok.sprites.front_default,
-      showdown_back:pPok.sprites.other && pPok.sprites.other.showdown && pPok.sprites.other.showdown.back_default?pPok.sprites.other.showdown.back_default:pPok.sprites.back_default,
-      dream_world_front:pPok.sprites.other && pPok.sprites.other.dream_world && pPok.sprites.other.dream_world.front_default?pPok.sprites.other.dream_world.front_default:pPok.sprites.front_default,
+      showdown_front: pPok.sprites.other && pPok.sprites.other.showdown && pPok.sprites.other.showdown.front_default ? pPok.sprites.other.showdown.front_default : pPok.sprites.front_default,
+      showdown_back: pPok.sprites.other && pPok.sprites.other.showdown && pPok.sprites.other.showdown.back_default ? pPok.sprites.other.showdown.back_default : pPok.sprites.back_default,
+      dream_world_front: pPok.sprites.other && pPok.sprites.other.dream_world && pPok.sprites.other.dream_world.front_default ? pPok.sprites.other.dream_world.front_default : pPok.sprites.front_default,
     };
   }
   private getPokemonResponseTypes(pPok: any): Type[] {
@@ -120,34 +115,42 @@ export class PokemonsService {
   private getPokemon(pNameOrId: string | number): Pokemon {
     return this.aListPokemons.find(p => p.name == pNameOrId || p.id === pNameOrId) as Pokemon;
   }
-  private setFavorite(pId:number){
-    this.aListPokemons.forEach(function(pok){      
-      pok.favorite=pok.id==pId;
-    }); 
+  private setFavorite(pId: number) {
+    this.aListPokemons.forEach(function (pok) {
+      pok.favorite = pok.id == pId;
+    });
   }
 
-  loadAllPokemons(){
-    this.loadPokemonsPaginated();
+
+  @logActionDecorator({
+    log: true
+  })
+  loadAllPokemons() {
+    this.lazyLoadPokemonsPaginated();
   }
-  getPokemonsList(): ListPokemon[]{
+  getPokemonsList(): ListPokemon[] {
     return this.aListPokemons;
   }
 
-  get allLoaded(){
+  get allLoaded() {
     return this.loadAllPokemonsAdvice.asObservable();
   }
-  get pokemons(){
+  get pokemons() {
     return this.loadPokemonsAdvice.asObservable();
   }
-  get favorite(){
+  get favorite() {
     return this.favoritePokemonAdvice.asObservable();
   }
-  get loadedPercent(){
+  get loadedPercent() {
     return this.loadPercentAdvice.asObservable();
   }
-  getStore(){
-    return this.store;
-  }
+/*   logAction(pFunction:string, pClass:string) {
+    this.store.dispatch(logAction({ log: { aFunction: pFunction, aClass: pClass } }));
+  } */
+
+  @logActionDecorator({
+    log: true
+  })
   loadPokemon(pNameOrId: string | number) {
     let pokemonLoaded = this.getPokemon(pNameOrId);
     if (pokemonLoaded && pokemonLoaded.height) {
@@ -175,20 +178,20 @@ export class PokemonsService {
           };
           this.updatePokemonData(resPok.name, pokemon);
           this.selectPokemonAdvice.next(pokemon);
+          this.store.dispatch(logAction({ log: { aClass: 'PokemonsService', aFunction: 'loadPokemon' } }));
         }
       });
     }
-
   }
   @logActionDecorator({
-      log:true
+    log: true
   })
   loadFavorite(pNameOrId: string | number) {
     let favoriteLoaded = this.getPokemon(pNameOrId);
     if (favoriteLoaded && favoriteLoaded.height) {
       this.setFavorite(favoriteLoaded.id);
       this.favoritePokemonAdvice.next(favoriteLoaded);
-      this.store.dispatch(setFavoritePokemon({favorite: { ...favoriteLoaded }}));
+      this.store.dispatch(setFavoritePokemon({ favorite: { ...favoriteLoaded } }));
     } else {
       this.http.get(`${this.aServiceURL}/${pNameOrId}`).subscribe((data) => {
         const resPok = JSON.parse(JSON.stringify(data));
@@ -214,14 +217,13 @@ export class PokemonsService {
           this.setFavorite(pokemon.id);
           this.favoritePokemonAdvice.next(pokemon);
           //this.store.dispatch(setFavoritePokemon({favorite: { ...pokemon }}));
-          this.store.dispatch({type:ACTIONS.SET_FAVORITE,favorite: { ...pokemon }});
-          //this.store.dispatch(logAction({log:{ text:'Set favorite', action:ACTIONS.SET_FAVORITE }}));
+          this.store.dispatch({ type: ACTIONS.SET_FAVORITE, favorite: { ...pokemon } });
+          this.store.dispatch(logAction({ log: { aClass: 'PokemonsService', aFunction: 'setFavorite' } }));
         }
       });
     }
   }
-  loadAbilities(poke:Pokemon)
-  {
-    return this.http.get(this.aServiceURL.replace('pokemon',`/ability/${poke.abilities[0].name}`)) as Observable<any>;
+  loadAbilities(poke: Pokemon) {
+    return this.http.get(this.aServiceURL.replace('pokemon', `/ability/${poke.abilities[0].name}`)) as Observable<any>;
   }
 }

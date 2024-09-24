@@ -50,6 +50,6 @@ export interface Pokemon extends ListPokemon {
 }
 
 export interface Log{
-    text:string,
-    action:string
+    aFunction:string,
+    aClass:string
 }
