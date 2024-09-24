@@ -45,6 +45,16 @@ img.dream-world {
   left: 20px;
 }
 
+div.ripple-container{
+  width:100%;
+  height:150px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+div.ripple-container:hover{
+  filter: brightness(0.8);
+}
+
 div.circle {
   height: 30px;
   border-radius: 50%;
