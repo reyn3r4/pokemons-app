@@ -27,21 +27,21 @@
         <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/><x id="INTERPOLATION" equiv-text="{{pokemon.favorite ? &apos;favorite&apos; : &apos;favorite_border&apos;}}"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Favorite </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/card-info/card-info.component.html</context>
-          <context context-type="linenumber">41,43</context>
+          <context context-type="linenumber">31,33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3033623772164647792" datatype="html">
         <source>Height</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/card-info/card-info.component.html</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5848348023107769657" datatype="html">
         <source>Weight</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/card-info/card-info.component.html</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">42</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6823872300561394961" datatype="html">
@@ -55,7 +55,7 @@
         <source>My favorite is <x id="INTERPOLATION" equiv-text="{{favorite.name|titlecase}}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/favorite-pokemon-bar/favorite-pokemon-bar.component.html</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5898890027775814801" datatype="html">
@@ -97,14 +97,14 @@
         <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="t-icon *ngIf=&quot;row.favorite&quot;&gt;"/>favorite<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/><x id="START_TAG_MAT_ICON_1" ctype="x-mat_icon_1" equiv-text="&lt;mat-icon *ngIf=&quot;!row.favorite&quot;&gt;"/>favorite_border<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/pokemons-list/pokemons-list.component.html</context>
-          <context context-type="linenumber">38,40</context>
+          <context context-type="linenumber">39,41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8953033926734869941" datatype="html">
         <source>Name</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pokemons/pokemons-list/pokemons-list.component.html</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">45</context>
         </context-group>
       </trans-unit>
     </body>
